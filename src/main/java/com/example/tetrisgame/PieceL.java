@@ -1,5 +1,5 @@
 package com.example.tetrisgame;
 
-public class PieceL {
+public class PieceL extends AllPieces {
     
 }
