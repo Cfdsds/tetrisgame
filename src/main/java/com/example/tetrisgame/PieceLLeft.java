@@ -1,9 +1,9 @@
 package com.example.tetrisgame;
 
-public class PiecelLLeft extends PieceBase {
+public class PieceLLeft extends PieceBase {
     private char[][] piecelleft;
     private int value;
-    public PiecelLLeft(){
+    public PieceLLeft(){
 
         piecelleft = new char[3][3];
             for (int i = 0; i < 3; i++) {
