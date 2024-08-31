@@ -5,7 +5,7 @@ public class PieceSquare extends AllPieces{
     private int value;
 
     public PieceSquare(){
-        pieceSquare = new char[1][4];
+        pieceSquare = new char[4][4];
 
         for(int i = 0; i < 4; i++){
             for(int j = 0; j < 4; j++){
@@ -13,10 +13,10 @@ public class PieceSquare extends AllPieces{
             }
         }
 
+        pieceSquare[0][0] = '*';
+        pieceSquare[0][1] = '*';
+        pieceSquare[1][0] = '*';
         pieceSquare[1][1] = '*';
-        pieceSquare[1][2] = '*';
-        pieceSquare[2][1] = '*';
-        pieceSquare[2][2] = '*';
 
         value=1;
     }

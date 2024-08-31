@@ -5,17 +5,17 @@ public class PieceDogRight extends AllPieces {
     private int value;
     public PieceDogRight(){
 
-        pieceDogR = new char[4][4];
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
+        pieceDogR = new char[3][3];
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
                    pieceDogR[i][j] = 0;
                 }
             }
 
-            pieceDogR[2][0] = '*';
-            pieceDogR[2][1] = '*';
+            pieceDogR[0][1] = '*';
+            pieceDogR[0][2] = '*';
+            pieceDogR[1][0] = '*';
             pieceDogR[1][1] = '*';
-            pieceDogR[1][2] = '*';
           
             value = 1;
     

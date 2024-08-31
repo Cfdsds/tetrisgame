@@ -5,17 +5,18 @@ public class PiecelLLeft extends AllPieces {
     private int value;
     public PiecelLLeft(){
 
-        piecelleft = new char[4][4];
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
+        piecelleft = new char[3][3];
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
                    piecelleft[i][j] = 0;
                 }
             }
 
-            piecelleft[3][0] = '*';
-            piecelleft[3][1] = '*';
+            piecelleft[2][0] = '*';
             piecelleft[2][1] = '*';
             piecelleft[1][1] = '*';
+            piecelleft[0][1] = '*';
+            
           
             value = 1;
     
