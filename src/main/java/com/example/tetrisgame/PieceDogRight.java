@@ -1,6 +1,6 @@
 package com.example.tetrisgame;
 
-public class PieceDogRight extends AllPieces {
+public class PieceDogRight extends PieceBase {
     private char[][] pieceDogR;
     private int value;
     public PieceDogRight(){

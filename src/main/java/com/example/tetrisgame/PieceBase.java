@@ -4,7 +4,7 @@ package com.example.tetrisgame;
 
 
 //crearse moverse y rotar
-public class AllPieces { 
+public class PieceBase { 
     public void NewPiece() {
         
     }
