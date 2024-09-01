@@ -8,4 +8,14 @@ public class PieceStickTest {
         PieceStick pS = new PieceStick();
         assert pS != null;
     }
+
+    @Test
+    public void rotarPaloIzqTest(){
+        PieceStick pS = new PieceStick();
+        pS.rotate_left();
+        assert pS.getOrientacion() == 2;
+        
+    }
+
+    
 }

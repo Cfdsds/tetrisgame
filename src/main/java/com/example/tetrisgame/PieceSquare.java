@@ -18,7 +18,7 @@ public class PieceSquare extends PieceBase{
         pieceSquare[1][0] = '*';
         pieceSquare[1][1] = '*';
 
-        orientacion=1;
+        orientacion = 1;
     }
 
     public void rotate_left(){
