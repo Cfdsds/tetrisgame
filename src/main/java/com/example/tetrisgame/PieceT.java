@@ -2,7 +2,7 @@ package com.example.tetrisgame;
 
 public class PieceT extends PieceBase {
     private char[][] piecet;
-    private int value;
+    private int orientacion;
     public PieceT(){
 
         piecet = new char[3][3];
@@ -18,7 +18,62 @@ public class PieceT extends PieceBase {
             piecet[0][1] = '*';
             
           
-            value = 1;
+            orientacion = 1;
     
-    }   
+    }
+    
+    public void rotate_left(){
+        switch(orientacion){
+        case 1://izquierda
+            //  *
+            // **
+            //  *
+            char[][] ti = new char[3][3];
+            ti[0][1]= '*';
+            ti[1][0]= '*';
+            ti[1][1]= '*';
+            ti[2][1]= '*';
+            piecet = ti;
+            orientacion = 2;
+            break;
+
+        case 2: //abajo
+        //  ***
+        //   *
+            char[][] tabj = new char[3][3];
+            tabj[0][0]= '*';
+            tabj[0][1]= '*';
+            tabj[0][2]= '*';
+            tabj[1][1]= '*';
+            piecet = tabj;
+            orientacion = 3;
+            break; 
+
+        case 3: //derecha
+        //   *
+        //   **
+        //   *
+            char[][] td = new char[3][3];
+            td[0][0]= '*';
+            td[1][0]= '*';
+            td[2][0]= '*';
+            td[1][1]= '*';
+            piecet = td;
+            orientacion = 4;
+            break;    
+
+        case 4: //arriba
+        //   *
+        //  ***
+            char[][] tarb = new char[4][4];
+            tarb[1][0]= '*';
+            tarb[1][1]= '*';
+            tarb[1][2]= '*';
+            tarb[0][1]= '*';
+            piecet = tarb;
+            orientacion = 1;
+            break;
+    
+        }
+    }
 }

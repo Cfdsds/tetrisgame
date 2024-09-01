@@ -2,7 +2,7 @@ package com.example.tetrisgame;
 
 public class PieceStick extends PieceBase {
     private char[][] pieceStick;
-    private int value;
+    private int orientacion;
 
     public PieceStick(){
         pieceStick = new char[4][4];
@@ -17,8 +17,19 @@ public class PieceStick extends PieceBase {
         pieceStick[2][1] = '*';
         pieceStick[3][1] = '*';
 
-        value=1;
+        orientacion=1;
 
+    }
+
+    public void rotate_left(){
+        //**** 
+        char[][] pi = new char[4][4];
+        pi[0][0]= '*';
+        pi[0][1]= '*';
+        pi[0][2]= '*';
+        pi[0][3]= '*';
+        pieceStick = pi;
+        orientacion = 2;
     }
 
 
