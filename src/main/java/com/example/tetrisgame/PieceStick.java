@@ -32,10 +32,6 @@ public class PieceStick extends PieceBase {
         orientacion = 2;
     }
 
-    public void setOrientacion(int valor){
-        orientacion = valor;
-    }
-
     public int getOrientacion(){
         return orientacion;
     }

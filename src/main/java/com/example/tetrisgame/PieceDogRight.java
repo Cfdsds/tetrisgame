@@ -48,4 +48,13 @@ public class PieceDogRight extends PieceBase {
             break;     
         }
     }
+
+    public int getOrientacion(){
+        return orientacion;
+    }
+        
+
+    public char[][]getPieceDogRight(){
+        return pieceDogR;
+    }
 }

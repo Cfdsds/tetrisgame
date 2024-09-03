@@ -32,5 +32,11 @@ public class PieceSquare extends PieceBase{
     }
     
    
-
+    public int getOrientacion(){
+        return orientacion;
+    }
+        
+    public char[][]getPieceSquare(){
+        return pieceSquare;
+    }
 }

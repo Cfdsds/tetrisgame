@@ -76,4 +76,13 @@ public class PieceLLeft extends PieceBase {
         }
     }
 
+    public int getOrientacion(){
+        return orientacion;
+    }
+        
+
+    public char[][]getPieceLLeft(){
+        return piecelleft;
+    }
+
 }

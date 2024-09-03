@@ -49,4 +49,14 @@ public class PieceDogLeft extends PieceBase {
             break;     
         }
     }
+
+
+    public int getOrientacion(){
+        return orientacion;
+    }
+        
+
+    public char[][]getPieceDogLeft(){
+        return pieceDogL;
+    }
 }

@@ -76,4 +76,13 @@ public class PieceT extends PieceBase {
     
         }
     }
+
+    public int getOrientacion(){
+        return orientacion;
+    }
+        
+
+    public char[][]getPieceT(){
+        return piecet;
+    }
 }
