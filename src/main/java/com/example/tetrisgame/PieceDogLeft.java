@@ -30,8 +30,8 @@ public class PieceDogLeft extends PieceBase {
             char[][] pdLi = new char[3][3];
             pdLi[0][1]= '*';
             pdLi[1][1]= '*';
-            pdLi[1][2]= '*';
-            pdLi[2][2]= '*';
+            pdLi[1][0]= '*';
+            pdLi[2][0]= '*';
             pieceDogL = pdLi;
             orientacion = 2;
             break;

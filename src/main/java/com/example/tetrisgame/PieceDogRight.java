@@ -28,10 +28,10 @@ public class PieceDogRight extends PieceBase {
         // **
         //  *
             char[][] pdRi = new char[3][3];
-            pdRi[0][1]= '*';
+            pdRi[0][0]= '*';
+            pdRi[1][0]= '*';
             pdRi[1][1]= '*';
-            pdRi[1][2]= '*';
-            pdRi[2][2]= '*';
+            pdRi[2][1]= '*';
             pieceDogR = pdRi;
             orientacion = 2;
             break;

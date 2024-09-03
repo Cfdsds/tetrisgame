@@ -8,4 +8,15 @@ public class PieceDogLeftTest {
         PieceDogLeft pdr = new PieceDogLeft();
         assert pdr != null;
     }
+
+    @Test
+    public void rotarDogLeftIzqTest(){
+        PieceDogLeft pdl = new PieceDogLeft();
+        pdl.rotate_left();
+        assert pdl.getOrientacion() == 2;
+        assert pdl.getPieceDogLeft()[0][1] == '*';
+        assert pdl.getPieceDogLeft()[1][1] == '*';
+        assert pdl.getPieceDogLeft()[1][0] == '*';
+        assert pdl.getPieceDogLeft()[2][0] == '*';
+    }
 }
