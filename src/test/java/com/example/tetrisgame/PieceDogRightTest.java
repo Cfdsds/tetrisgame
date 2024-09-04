@@ -19,4 +19,15 @@ public class PieceDogRightTest {
         assert pdr.getPieceDogRight()[1][1] == '*';
         assert pdr.getPieceDogRight()[2][1] == '*';
     }
+
+    @Test
+    public void rotarDogRightDerTest(){
+        PieceDogRight pdr = new PieceDogRight();
+        pdr.rotate_right();
+        assert pdr.getOrientacion() == 2;
+        assert pdr.getPieceDogRight()[0][0] == '*';
+        assert pdr.getPieceDogRight()[1][0] == '*';
+        assert pdr.getPieceDogRight()[1][1] == '*';
+        assert pdr.getPieceDogRight()[2][1] == '*';
+    }
 }

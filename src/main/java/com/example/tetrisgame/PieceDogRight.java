@@ -49,6 +49,10 @@ public class PieceDogRight extends PieceBase {
         }
     }
 
+    public void rotate_right(){
+        rotate_left();
+    }
+
     public int getOrientacion(){
         return orientacion;
     }
