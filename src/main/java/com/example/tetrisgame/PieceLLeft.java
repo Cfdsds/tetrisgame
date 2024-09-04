@@ -76,6 +76,64 @@ public class PieceLLeft extends PieceBase {
         }
     }
 
+    public void rotate_right(){
+        switch(orientacion){
+        case 1: //derecha
+        //   *
+        //   ***
+            char[][] lid = new char[4][4];
+            lid[0][0]= '*';
+            lid[1][0]= '*';
+            lid[1][1]= '*';
+            lid[1][2]= '*';
+            piecelleft = lid;
+            orientacion = 4;
+            break;  
+
+        case 2: //abajo
+        //  **
+        //  *
+        //  *
+            char[][] liabj = new char[3][3];
+            liabj[0][0]= '*';
+            liabj[1][0]= '*';
+            liabj[2][0]= '*';
+            liabj[0][1]= '*';
+            piecelleft = liabj;
+            orientacion = 3;
+            break;  
+            
+
+        case 3://izquierda
+            //  ***
+            //    *
+            char[][] lii = new char[3][3];
+            lii[0][0]= '*';
+            lii[0][1]= '*';
+            lii[0][2]= '*';
+            lii[1][2]= '*';
+            piecelleft = lii;
+            orientacion = 2;
+            break; 
+        
+
+        case 4: //arriba
+        //   *
+        //   *
+        //  **
+            char[][] liarb = new char[3][3];
+            liarb[0][1]= '*';
+            liarb[1][1]= '*';
+            liarb[2][1]= '*';
+            liarb[2][0]= '*';
+            piecelleft = liarb;
+            orientacion = 2;
+            break;
+    
+        }
+    }
+
+
     public int getOrientacion(){
         return orientacion;
     }
