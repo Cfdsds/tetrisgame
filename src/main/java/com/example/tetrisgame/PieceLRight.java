@@ -77,53 +77,53 @@ public class PieceLRight extends PieceBase {
 
     public void rotate_right(){
         switch(orientacion){
-        case 1://derecha
-            //     *
-            //   ***
-            char[][] ld = new char[3][3];
-            ld[1][0]= '*';
-            ld[1][1]= '*';
-            ld[1][2]= '*';
-            ld[0][2]= '*';
-            piecelright = ld;
-            orientacion = 2;
-            break; 
-
-        case 2: //arriba
-        // **
-        //  *
-        //  *
-            char[][] larb = new char[3][3];
-            larb[0][0]= '*';
-            larb[0][1]= '*';
-            larb[1][1]= '*';
-            larb[2][1]= '*';
-            piecelright = larb;
-            orientacion = 3;
-            break;  
-
-        case 3: //izquierda
+        case 1: //derecha
         //   ***
         //   *
-            char[][] li = new char[4][4];
-            li[0][0]= '*';
-            li[0][1]= '*';
-            li[0][2]= '*';
-            li[1][0]= '*';
-            piecelright = li;
+            char[][] lrd = new char[4][4];
+            lrd[0][0]= '*';
+            lrd[0][1]= '*';
+            lrd[0][2]= '*';
+            lrd[1][0]= '*';
+            piecelright = lrd;
+            orientacion = 2;
+            break;
+
+        case 2: //abajo
+            // **
+            //  *
+            //  *
+                char[][] larb = new char[3][3];
+                larb[0][0]= '*';
+                larb[0][1]= '*';
+                larb[1][1]= '*';
+                larb[2][1]= '*';
+                piecelright = larb;
+                orientacion = 3;
+                break;  
+        
+        case 3://izquierda
+            //     *
+            //   ***
+            char[][] lri = new char[3][3];
+            lri[1][0]= '*';
+            lri[1][1]= '*';
+            lri[1][2]= '*';
+            lri[0][2]= '*';
+            piecelright = ld;
             orientacion = 4;
             break;  
 
-        case 4: //abajo
+        case 4: //arriba
         //   *
         //   *
         //   **
-            char[][] labj = new char[3][3];
-            labj[0][0]= '*';
-            labj[1][0]= '*';
-            labj[2][0]= '*';
-            labj[2][1]= '*';
-            piecelright = labj;
+            char[][] lrarb = new char[3][3];
+            lrarb[0][0]= '*';
+            lrarb[1][0]= '*';
+            lrarb[2][0]= '*';
+            lrarb[2][1]= '*';
+            piecelright = lrarb;
             orientacion = 1;
             break;
     

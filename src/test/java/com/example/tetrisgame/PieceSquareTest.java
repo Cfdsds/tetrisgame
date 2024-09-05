@@ -20,5 +20,16 @@ public class PieceSquareTest {
         assert pSq.getPieceSquare()[1][1] == '*';
     }
 
+    @Test
+    public void rotarCuadradoDerTest(){
+        PieceSquare pSq = new PieceSquare();
+        pSq.rotate_right();
+        assert pSq.getOrientacion() == 2;
+        assert pSq.getPieceSquare()[0][0] == '*';
+        assert pSq.getPieceSquare()[0][1] == '*';
+        assert pSq.getPieceSquare()[1][0] == '*';
+        assert pSq.getPieceSquare()[1][1] == '*';
+    }
+
     
 }

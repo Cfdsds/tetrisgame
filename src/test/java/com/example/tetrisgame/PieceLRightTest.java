@@ -20,5 +20,16 @@ public class PieceLRightTest {
         assert plr.getPieceLRight()[0][2] == '*';
     }
 
+    @Test
+    public void rotarLRightDerTest(){
+        PieceLRight plr = new PieceLRight();
+        plr.rotate_right();
+        assert plr.getOrientacion() == 2;
+        assert plr.getPieceLRight()[0][0] == '*';
+        assert plr.getPieceLRight()[0][1] == '*';
+        assert plr.getPieceLRight()[0][2] == '*';
+        assert plr.getPieceLRight()[1][0] == '*';
+    }
+
     
 }

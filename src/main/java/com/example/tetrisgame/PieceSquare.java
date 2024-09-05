@@ -30,6 +30,10 @@ public class PieceSquare extends PieceBase{
         pieceSquare = si;
         orientacion = 2;
     }
+
+    public void rotate_right(){
+        rotate_left();
+    }
     
    
     public int getOrientacion(){

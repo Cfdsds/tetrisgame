@@ -87,7 +87,7 @@ public class PieceLLeft extends PieceBase {
             lid[1][1]= '*';
             lid[1][2]= '*';
             piecelleft = lid;
-            orientacion = 4;
+            orientacion = 2;
             break;  
 
         case 2: //abajo
@@ -113,7 +113,7 @@ public class PieceLLeft extends PieceBase {
             lii[0][2]= '*';
             lii[1][2]= '*';
             piecelleft = lii;
-            orientacion = 2;
+            orientacion = 4;
             break; 
         
 
@@ -127,7 +127,7 @@ public class PieceLLeft extends PieceBase {
             liarb[2][1]= '*';
             liarb[2][0]= '*';
             piecelleft = liarb;
-            orientacion = 2;
+            orientacion = 1;
             break;
     
         }

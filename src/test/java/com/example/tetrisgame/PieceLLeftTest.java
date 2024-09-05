@@ -19,4 +19,15 @@ public class PieceLLeftTest {
         assert pll.getPieceLLeft()[0][2] == '*';
         assert pll.getPieceLLeft()[1][2] == '*';
     }
+
+    @Test
+    public void rotarLLeftDerTest(){
+        PieceLLeft pll = new PieceLLeft();
+        pll.rotate_right();
+        assert pll.getOrientacion() == 2;
+        assert pll.getPieceLLeft()[0][0] == '*';
+        assert pll.getPieceLLeft()[1][0] == '*';
+        assert pll.getPieceLLeft()[1][1] == '*';
+        assert pll.getPieceLLeft()[1][2] == '*';
+    }
 }
