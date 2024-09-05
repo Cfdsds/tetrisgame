@@ -93,17 +93,17 @@ public class PieceT extends PieceBase {
             orientacion = 4;
             break;
 
-        case 2: //abajo
-        //  ***
+        case 2: //arriba
         //   *
-            char[][] tabj = new char[3][3];
-            tabj[0][0]= '*';
-            tabj[0][1]= '*';
-            tabj[0][2]= '*';
-            tabj[1][1]= '*';
-            piecet = tabj;
-            orientacion = 3;
-            break; 
+        //  ***
+            char[][] tarb = new char[4][4];
+            tarb[0][1]= '*';
+            tarb[1][0]= '*';
+            tarb[1][1]= '*';
+            tarb[1][2]= '*';
+            piecet = tarb;
+            orientacion = 1;
+            break;
 
         case 3: //izquierda
         //   *
@@ -118,17 +118,17 @@ public class PieceT extends PieceBase {
             orientacion = 2;
             break;    
 
-        case 4: //arriba
-        //   *
+        case 4: //abajo
         //  ***
-            char[][] tarb = new char[4][4];
-            tarb[0][1]= '*';
-            tarb[1][0]= '*';
-            tarb[1][1]= '*';
-            tarb[1][2]= '*';
-            piecet = tarb;
-            orientacion = 1;
-            break;
+        //   *
+            char[][] tabj = new char[3][3];
+            tabj[0][0]= '*';
+            tabj[0][1]= '*';
+            tabj[0][2]= '*';
+            tabj[1][1]= '*';
+            piecet = tabj;
+            orientacion = 3;
+            break; 
     
         }
     }

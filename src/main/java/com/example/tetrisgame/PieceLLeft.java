@@ -70,7 +70,7 @@ public class PieceLLeft extends PieceBase {
             lii[2][1]= '*';
             lii[2][0]= '*';
             piecelleft = lii;
-            orientacion = 2;
+            orientacion = 1;
             break;
     
         }

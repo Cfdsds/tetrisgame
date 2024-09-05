@@ -86,20 +86,20 @@ public class PieceLRight extends PieceBase {
             lrd[0][2]= '*';
             lrd[1][0]= '*';
             piecelright = lrd;
-            orientacion = 2;
+            orientacion = 4;
             break;
 
-        case 2: //abajo
-            // **
+        case 2: //arriba
             //  *
             //  *
-                char[][] larb = new char[3][3];
-                larb[0][0]= '*';
-                larb[0][1]= '*';
-                larb[1][1]= '*';
-                larb[2][1]= '*';
-                piecelright = larb;
-                orientacion = 3;
+            //  **
+                char[][] larr = new char[3][3];
+                larr[0][0]= '*';
+                larr[0][1]= '*';
+                larr[1][1]= '*';
+                larr[2][1]= '*';
+                piecelright = larr;
+                orientacion = 1;
                 break;  
         
         case 3://izquierda
@@ -111,21 +111,21 @@ public class PieceLRight extends PieceBase {
             lri[1][2]= '*';
             lri[0][2]= '*';
             piecelright = lri;
-            orientacion = 4;
+            orientacion = 2;
             break;  
 
-        case 4: //arriba
+        case 4: //abajo
+        //  **
         //   *
         //   *
-        //   **
-            char[][] lrarb = new char[3][3];
-            lrarb[0][0]= '*';
-            lrarb[1][0]= '*';
-            lrarb[2][0]= '*';
-            lrarb[2][1]= '*';
-            piecelright = lrarb;
-            orientacion = 1;
-            break;
+            char[][] labj = new char[3][3];
+            labj[0][0]= '*';
+            labj[0][1]= '*';
+            labj[1][1]= '*';
+            labj[2][1]= '*';
+            piecelright = labj;
+            orientacion = 3;
+            break;  
     
         }
     }
