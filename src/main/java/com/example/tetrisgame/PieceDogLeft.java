@@ -40,10 +40,10 @@ public class PieceDogLeft extends PieceBase {
         // **
         //  **
             char[][] pdRa = new char[3][3];
+            pdRa[0][0] = '*';
             pdRa[0][1] = '*';
-            pdRa[0][2] = '*';
-            pdRa[1][0] = '*';
             pdRa[1][1] = '*';
+            pdRa[1][2] = '*';
             pieceDogL = pdRa;
             orientacion = 1;
             break;     

@@ -21,6 +21,18 @@ public class PieceDogLeftTest {
     }
 
     @Test
+    public void rotarDogLeftIzq2VecesTest(){
+        PieceDogLeft pdl = new PieceDogLeft();
+        pdl.rotate_left();
+        pdl.rotate_left();
+        assert pdl.getOrientacion() == 1;
+        assert pdl.getPieceDogLeft()[0][0] == '*';
+        assert pdl.getPieceDogLeft()[0][1] == '*';
+        assert pdl.getPieceDogLeft()[1][1] == '*';
+        assert pdl.getPieceDogLeft()[1][2] == '*';
+    }
+
+    @Test
     public void rotarDogLeftDerTest(){
         PieceDogLeft pdl = new PieceDogLeft();
         pdl.rotate_right();
@@ -29,5 +41,17 @@ public class PieceDogLeftTest {
         assert pdl.getPieceDogLeft()[1][1] == '*';
         assert pdl.getPieceDogLeft()[1][0] == '*';
         assert pdl.getPieceDogLeft()[2][0] == '*';
+    }
+
+    @Test
+    public void rotarDogLeftDer2VecesTest(){
+        PieceDogLeft pdl = new PieceDogLeft();
+        pdl.rotate_right();
+        pdl.rotate_right();
+        assert pdl.getOrientacion() == 1;
+        assert pdl.getPieceDogLeft()[0][0] == '*';
+        assert pdl.getPieceDogLeft()[0][1] == '*';
+        assert pdl.getPieceDogLeft()[1][1] == '*';
+        assert pdl.getPieceDogLeft()[1][2] == '*';
     }
 }
