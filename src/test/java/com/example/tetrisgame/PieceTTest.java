@@ -44,6 +44,20 @@ public class PieceTTest {
         assert pT.getPieceT()[1][1] == '*';
     }
 
+    @Test
+    public void rotarTIzq4VecesTest(){
+        PieceT pT = new PieceT();
+        pT.rotate_left();
+        pT.rotate_left();
+        pT.rotate_left();
+        pT.rotate_left();
+        assert pT.getOrientacion() == 1;
+        assert pT.getPieceT()[1][0] == '*';
+        assert pT.getPieceT()[1][1] == '*';
+        assert pT.getPieceT()[1][2] == '*';
+        assert pT.getPieceT()[0][1] == '*';
+    }
+
     /* ROTAMOS LA PIEZA A LA DERECHA */
 
     @Test
