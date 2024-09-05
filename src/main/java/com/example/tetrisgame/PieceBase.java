@@ -10,6 +10,10 @@ public class PieceBase {
     public int x;
     public int y;
 
+    public PieceBase(){
+        pieza = new char[4][4];
+    }
+
     public void NewPiece() {
         
     }
