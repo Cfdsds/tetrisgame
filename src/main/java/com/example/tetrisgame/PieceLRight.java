@@ -137,4 +137,9 @@ public class PieceLRight extends PieceBase {
     public char[][]getPieceLRight(){
         return piecelright;
     }
+
+    @Override
+    public char[][] getPieza() {
+        return piecelright;
+    }
 }

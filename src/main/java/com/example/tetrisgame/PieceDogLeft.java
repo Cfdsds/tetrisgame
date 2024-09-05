@@ -64,4 +64,9 @@ public class PieceDogLeft extends PieceBase {
     public char[][]getPieceDogLeft(){
         return pieceDogL;
     }
+
+    @Override
+    public char[][] getPieza() {
+        return pieceDogL;
+    }
 }

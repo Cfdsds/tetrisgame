@@ -4,16 +4,12 @@ package com.example.tetrisgame;
 
 
 //crearse moverse y rotar
-public class PieceBase { 
-    public char[][] pieza;
-    public char[][] matrizVacia;
+public abstract class PieceBase { 
+    public abstract char[][] getPieza(); // Método abstracto
     public int x;
     public int y;
 
-    public PieceBase(){
-        pieza = new char[4][4];
-    }
-
+ 
     public void NewPiece() {
         
     }
@@ -38,11 +34,5 @@ public class PieceBase {
         y = valor;
     }
 
-    public char[][] getPieza(){
-        return pieza;
-    }
 
-    public void setPieza(char[][] valor) {
-        pieza = valor;
-    }
 }

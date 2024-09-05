@@ -143,4 +143,8 @@ public class PieceLLeft extends PieceBase {
         return piecelleft;
     }
 
+    @Override
+    public char[][] getPieza() {
+        return piecelleft;
+    }
 }

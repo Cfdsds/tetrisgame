@@ -43,4 +43,9 @@ public class PieceSquare extends PieceBase{
     public char[][]getPieceSquare(){
         return pieceSquare;
     }
+
+    @Override
+    public char[][] getPieza() {
+        return pieceSquare;
+    }
 }

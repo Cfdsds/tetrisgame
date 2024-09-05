@@ -143,4 +143,9 @@ public class PieceT extends PieceBase {
     public char[][]getPieceT(){
         return piecet;
     }
+
+    @Override
+    public char[][] getPieza() {
+        return piecet;
+    }
 }

@@ -62,5 +62,8 @@ public class PieceStick extends PieceBase {
         return pieceStick;
     }
 
-
+    @Override
+    public char[][] getPieza() {
+        return pieceStick;
+    }
 }
