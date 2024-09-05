@@ -90,7 +90,7 @@ public class PieceT extends PieceBase {
             td[1][2]= '*';
             td[2][1]= '*';
             piecet = td;
-            orientacion = 2;
+            orientacion = 4;
             break;
 
         case 2: //abajo
@@ -115,7 +115,7 @@ public class PieceT extends PieceBase {
             ti[1][1]= '*';
             ti[2][1]= '*';
             piecet = ti;
-            orientacion = 4;
+            orientacion = 2;
             break;    
 
         case 4: //arriba

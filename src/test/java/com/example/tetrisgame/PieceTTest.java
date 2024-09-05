@@ -23,7 +23,7 @@ public class PieceTTest {
     public void rotarTDerTest(){
         PieceT pT = new PieceT();
         pT.rotate_right();
-        assert pT.getOrientacion() == 2;
+        assert pT.getOrientacion() == 4;
         assert pT.getPieceT()[0][1] == '*';
         assert pT.getPieceT()[1][1] == '*';
         assert pT.getPieceT()[1][2] == '*';

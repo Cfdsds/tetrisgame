@@ -110,7 +110,7 @@ public class PieceLRight extends PieceBase {
             lri[1][1]= '*';
             lri[1][2]= '*';
             lri[0][2]= '*';
-            piecelright = ld;
+            piecelright = lri;
             orientacion = 4;
             break;  
 
