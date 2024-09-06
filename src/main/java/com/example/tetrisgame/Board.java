@@ -22,9 +22,26 @@ public class Board {
     }
 
     public PieceBase piezaRandom() {
-        return new PieceSquare();
-    }
-
+        Random random = new Random();
+        int tipoPieza = random.nextInt(6); // Cambia el rango según el número de piezas
+        switch(tipoPieza) {
+            case 0:
+                return new PieceStick();
+            case 1:
+                return new PieceSquare();
+            case 2:
+                return new PieceDogLeft();
+            case 3:
+                return new PieceDogRight();
+            case 4:
+                return new PieceLLeft();
+            case 5:
+                return new PieceLRight();
+            case 6:
+                return new PieceT();       
+        }
+        return null;
+    }    
 
     public void addPieces(PieceBase piezaR) {
         PieceBase piezaRand = piezaR; // Usa la pieza pasada como argumento
