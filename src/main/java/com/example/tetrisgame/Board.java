@@ -5,13 +5,11 @@ import java.util.Random;
 public class Board {
     //tablero de 10x20
     public char[][] tablero;
-    public int xRandom;
-    public int yRandom;
 
     public Board() {
-        tablero = new char[10][20];
+        tablero = new char[10][10];
         for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 20; j++) {
+            for (int j = 0; j < 10; j++) {
                 tablero[i][j] = '.';
             }
         }
@@ -23,7 +21,7 @@ public class Board {
 
     public PieceBase piezaRandom() {
         Random random = new Random();
-        int tipoPieza = random.nextInt(6); // Cambia el rango según el número de piezas
+        int tipoPieza = random.nextInt(7); // Cambia el rango según el número de piezas
         switch(tipoPieza) {
             case 0:
                 return new PieceStick();
@@ -41,25 +39,34 @@ public class Board {
                 return new PieceT();       
         }
         return null;
-    }    
+    } 
+
+    //public PieceBase rotarPieza(//piezaRandom) {
+       
+
 
     public void addPieces(PieceBase piezaR) {
-        PieceBase piezaRand = piezaR; // Usa la pieza pasada como argumento
-     
-        piezaRand.setX(0); // Establece la posición inicial para la prueba
-        piezaRand.setY(0);
-     
-        char[][] pieza = piezaRand.getPieza(); // Usa getPieza()
-        int posX = piezaRand.getX();
-        int posY = piezaRand.getY();
-     
+        Random random = new Random();
+        
+        // Calcula el máximo valor para Y (columnas)
+        int maxY = tablero[0].length - piezaR.getPieza()[0].length;
+        int randomY = random.nextInt(maxY + 1); // Genera una posición Y aleatoria
+        int fixedX = 0; // X siempre será 0 para que la pieza aparezca en la primera fila
+        
+        piezaR.setX(fixedX); // Establece X en 0 (fila)
+        piezaR.setY(randomY); // Establece Y en posición aleatoria (columna)
+        
+        char[][] pieza = piezaR.getPieza(); // Obtiene la matriz de la pieza
+        int posX = piezaR.getX(); // Fila
+        int posY = piezaR.getY(); // Columna
+        
         for (int i = 0; i < pieza.length; i++) {
             for (int j = 0; j < pieza[i].length; j++) {
                 if (pieza[i][j] != '.') {
-                    int boardX = posX + j;
-                    int boardY = posY + i;
+                    int boardX = posX + i; // Fila en el tablero
+                    int boardY = posY + j; // Columna en el tablero
                     if (boardX >= 0 && boardX < tablero[0].length && boardY >= 0 && boardY < tablero.length) {
-                        tablero[boardY][boardX] = pieza[i][j];
+                        tablero[boardX][boardY] = pieza[i][j];
                     }
                 }
             }
@@ -67,7 +74,7 @@ public class Board {
     }
     
     
-
+    
     
 }
 

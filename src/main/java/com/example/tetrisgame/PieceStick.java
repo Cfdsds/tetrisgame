@@ -32,7 +32,7 @@ public class PieceStick extends PieceBase {
             pi[0][3]= '*';
             pieceStick = pi;
             orientacion = 2;
-                break;
+            break;
             case 2:
             //  *
             //  *
@@ -56,7 +56,11 @@ public class PieceStick extends PieceBase {
     public int getOrientacion(){
         return orientacion;
     }
-        
+
+    public void setOrientacion(int valor){
+        orientacion = valor;
+    }
+
 
     public char[][]getPieceStick(){
         return pieceStick;

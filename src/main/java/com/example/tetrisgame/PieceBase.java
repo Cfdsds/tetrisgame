@@ -8,6 +8,7 @@ public abstract class PieceBase {
     public abstract char[][] getPieza(); // Método abstracto
     public int x;
     public int y;
+    public int orientacion;
 
  
     public void NewPiece() {
@@ -32,6 +33,17 @@ public abstract class PieceBase {
 
     public void setY(int valor) {
         y = valor;
+    }
+
+    public int getOrientacion(){
+        return orientacion;
+    }
+
+    public void setOrientacion(int valor){
+        orientacion = valor;
+    }
+
+    public void rotate_right() {
     }
 
 
