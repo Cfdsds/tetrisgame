@@ -12,6 +12,8 @@ public class Clock {
         valor = tic;
     }
 
-
+    public void ticCounter(){
+        tic++;
+    }
 
 }
