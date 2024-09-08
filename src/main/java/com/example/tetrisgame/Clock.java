@@ -1,19 +1,15 @@
 package com.example.tetrisgame;
 
 public class Clock {
-    private int tic = 0;
+    private int ticCont = 0;
 
 
     public int getTick(){
-        return tic;
+        return ticCont;
     }
 
-    public void setTick(int valor){
-        valor = tic;
-    }
-
-    public void ticCounter(){
-        tic++;
+    public void tic(){
+        ticCont++;
     }
 
 }
