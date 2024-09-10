@@ -93,21 +93,36 @@ public class BoardTest {
 
     @Test
     void verificar_que_la_pieza_baja_de_posicion_test() {
-        // Crear un tablero y una pieza cuadrada
-        Board board = new Board();
-        PieceBase piezaCuadrada = new PieceSquare();
+        Board b1 = new Board();
+        PieceBase pS = new PieceSquare();
         
-        // Agregar la pieza al tablero
-        board.addPieces(piezaCuadrada);
+        b1.addPieces(pS);
         
-        // Mover la pieza hacia abajo
-        board.bajarPieza(piezaCuadrada);
+        b1.bajarPieza(pS);
         
         // Recorrer toda la primera fila y verificar que no hay ningún '*'
-        for (int j = 0; j < board.getBoard()[0].length; j++) {
-            assert board.getBoard()[0][j] == '.';
+        for (int j = 0; j < b1.getBoard()[0].length; j++) {
+            assert b1.getBoard()[0][j] == '.';
         }
     }
+
+    @Test
+    void bajar_pieza_random_test(){
+        Board b1 = new Board();
+        PieceBase piezaRandom = b1.piezaRandom();
+        
+        b1.addPieces(piezaRandom);
+        
+        b1.bajarPieza(piezaRandom);
+        
+        // Recorrer toda la primera fila y verificar que no hay ningún '*'
+        for (int j = 0; j < b1.getBoard()[0].length; j++) {
+            assert b1.getBoard()[0][j] == '.';
+        }
+    }
+    
+    
+    
         
 }
 

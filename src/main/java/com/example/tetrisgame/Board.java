@@ -83,6 +83,32 @@ public class Board {
 
     public void bajarPieza(PieceBase piezaR) {
         // Limpiar la posición actual de la pieza en el tablero
+        limpiarPieza(piezaR);
+        
+        // Mover la pieza una posición hacia abajo
+        piezaR.setX(piezaR.getX() + 1);
+        
+        // Volver a colocar la pieza en su nueva posición
+        char[][] pieza = piezaR.getPieza();
+
+        int posX = piezaR.getX(); // Nueva fila
+        int posY = piezaR.getY(); // Columna
+        
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int boardX = posX + i;
+                    int boardY = posY + j;
+                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
+                        tablero[boardX][boardY] = pieza[i][j];  // Colocar la pieza en su nueva posición
+                    }
+                }
+            }
+        }
+    }
+    
+
+    public void limpiarPieza(PieceBase piezaR) {
         char[][] pieza = piezaR.getPieza();
         int posX = piezaR.getX();
         int posY = piezaR.getY();
@@ -98,27 +124,10 @@ public class Board {
                 }
             }
         }
-    
-        // Mover la pieza una posición hacia abajo
-        piezaR.setX(piezaR.getX() + 1);
-    
-        // Volver a colocar la pieza en su nueva posición
-        posX = piezaR.getX(); // Nueva fila
-        posY = piezaR.getY(); // Columna
-    
-        for (int i = 0; i < pieza.length; i++) {
-            for (int j = 0; j < pieza[i].length; j++) {
-                if (pieza[i][j] != '.') {
-                    int boardX = posX + i;
-                    int boardY = posY + j;
-                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
-                        tablero[boardX][boardY] = pieza[i][j];  // Colocar la pieza en su nueva posición
-                    }
-                }
-            }
-        }
     }
     
+    
+
     
 }
     
