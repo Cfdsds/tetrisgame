@@ -1,8 +1,8 @@
 package com.example.tetrisgame;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Random;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class BoardTest {
@@ -120,14 +120,33 @@ public class BoardTest {
             assert b1.getBoard()[0][j] == '.';
         }
     }
+
+    @Test
+    void mover_derecha_cuadrado_test(){
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
+        
+        b1.addPieces(pS);
+        int posicionInicialX = pS.getX();
+        b1.moverDerecha(pS);
+        int posicionFinalX = pS.getX();
     
+        assertEquals(posicionInicialX + 1, posicionFinalX, "La pieza no se movió una posición hacia la derecha");
+    }
+
+    //@Test
+    //void mover_izquierda_cuadrado_test(){
+    //    Board b1 = new Board();
+    //    PieceSquare pS = new PieceSquare();
+        
+    //    b1.addPieces(pS);
+   //     int posicionicialX = pS.getX();
+    //    b1.moverIzquierda(pS);
+    //    int posicionFinalX = pS.getX();
+    
+    //    assertEquals(posicionicialX - 1, posicionFinalX, "La pieza no se movió una opción hacia la izquierda");
+    //}
     
     
         
 }
-
-
-
-
-
-

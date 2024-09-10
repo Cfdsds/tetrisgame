@@ -130,6 +130,34 @@ public class Board {
         }
     }
 
+    public void moverDerecha(PieceBase piezaR) {
+        // Limpiar la posición actual de la pieza en el tablero
+        limpiarPieza(piezaR);
+    
+        // Verificar si la pieza puede moverse hacia la derecha
+        if (piezaR.getX() + piezaR.getPieza().length < tablero[0].length) {
+            // Si puede moverse, actualizar la posición X
+            piezaR.setX(piezaR.getX() + 1);
+        }
+    
+        // Volver a colocar la pieza en su nueva posición
+        colocarPieza(piezaR);
+    }
+    
+    public void moverIzquierda(PieceBase piezaR) {
+        // Limpiar la posición actual de la pieza en el tablero
+        limpiarPieza(piezaR);
+    
+        // Verificar si la pieza puede moverse hacia la izquierda
+        if (piezaR.getX() > 0) {
+            // Si puede moverse, actualizar la posición X
+            piezaR.setX(piezaR.getX() - 1);
+        }
+    
+        // Volver a colocar la pieza en su nueva posición
+        colocarPieza(piezaR);
+    }
+
     
 }
     
