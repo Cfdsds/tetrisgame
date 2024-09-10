@@ -5,19 +5,26 @@ import java.util.Random;
 public class Board {
     //tablero de 10x20
     public char[][] tablero;
+    public PieceBase piezaActual;
+
 
     public Board() {
+        piezaActual = piezaRandom();
         tablero = new char[10][10];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 tablero[i][j] = '.';
             }
         }
+
     }
 
     public char[][] getBoard() {
         return tablero;
     }
+
+
+
 
     public PieceBase piezaRandom() {
         Random random = new Random();
@@ -40,9 +47,8 @@ public class Board {
         }
         return null;
     } 
-
-    //public PieceBase rotarPieza(//piezaRandom) {
-       
+    
+    
 
 
     public void addPieces(PieceBase piezaR) {
@@ -60,13 +66,53 @@ public class Board {
         int posX = piezaR.getX(); // Fila
         int posY = piezaR.getY(); // Columna
         
+    
         for (int i = 0; i < pieza.length; i++) {
             for (int j = 0; j < pieza[i].length; j++) {
                 if (pieza[i][j] != '.') {
                     int boardX = posX + i; // Fila en el tablero
                     int boardY = posY + j; // Columna en el tablero
-                    if (boardX >= 0 && boardX < tablero[0].length && boardY >= 0 && boardY < tablero.length) {
-                        tablero[boardX][boardY] = pieza[i][j];
+                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
+                        // Asegúrate de que no estés sobrescribiendo una posición ocupada
+                        tablero[boardX][boardY] = '*';
+                    }
+                }
+            }
+        }
+    }
+
+    public void bajarPieza(PieceBase piezaR) {
+        // Limpiar la posición actual de la pieza en el tablero
+        char[][] pieza = piezaR.getPieza();
+        int posX = piezaR.getX();
+        int posY = piezaR.getY();
+    
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int boardX = posX + i;
+                    int boardY = posY + j;
+                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
+                        tablero[boardX][boardY] = '.';  // Limpiar la posición
+                    }
+                }
+            }
+        }
+    
+        // Mover la pieza una posición hacia abajo
+        piezaR.setX(piezaR.getX() + 1);
+    
+        // Volver a colocar la pieza en su nueva posición
+        posX = piezaR.getX(); // Nueva fila
+        posY = piezaR.getY(); // Columna
+    
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int boardX = posX + i;
+                    int boardY = posY + j;
+                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
+                        tablero[boardX][boardY] = pieza[i][j];  // Colocar la pieza en su nueva posición
                     }
                 }
             }
@@ -74,9 +120,5 @@ public class Board {
     }
     
     
-    
-    
 }
-
-
-
+    

@@ -90,11 +90,26 @@ public class BoardTest {
         
 
     }
-    
 
+    @Test
+    void verificar_que_la_pieza_baja_de_posicion_test() {
+        // Crear un tablero y una pieza cuadrada
+        Board board = new Board();
+        PieceBase piezaCuadrada = new PieceSquare();
+        
+        // Agregar la pieza al tablero
+        board.addPieces(piezaCuadrada);
+        
+        // Mover la pieza hacia abajo
+        board.bajarPieza(piezaCuadrada);
+        
+        // Recorrer toda la primera fila y verificar que no hay ningún '*'
+        for (int j = 0; j < board.getBoard()[0].length; j++) {
+            assert board.getBoard()[0][j] == '.';
+        }
+    }
+        
 }
-
-
 
 
 

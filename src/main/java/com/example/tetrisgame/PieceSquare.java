@@ -9,7 +9,7 @@ public class PieceSquare extends PieceBase{
 
         for(int i = 0; i < 4; i++){
             for(int j = 0; j < 4; j++){
-                pieceSquare[i][j] = 0;
+                pieceSquare[i][j] = '.';
             }
         }
 
