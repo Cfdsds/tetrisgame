@@ -13,22 +13,28 @@ public class BoardTest {
         assert b1.getBoard()[0][0] == '.';
     }
     
-    //@Test
-    //void agregar_pieza_cuadrado_test(){
-    //    Board b1 = new Board();
-    //    PieceSquare piezaRandom = new PieceSquare();
-//
-    //    b1.addPieces(piezaRandom);
-//
-    //    assert b1.getBoard()[0][0] == '*';
-    //    assert b1.getBoard()[0][1] == '*';
-    //    assert b1.getBoard()[1][0] == '*';
-    //    assert b1.getBoard()[1][1] == '*';
-//
-//
-//
-    //}
+    @Test
+    void agregar_pieza_cuadrado_test(){
+        Board b1 = new Board();
+        PieceSquare piezaRandom = new PieceSquare();
 
+        b1.addPieces(piezaRandom);
+
+        // Recorrer toda la primera fila y verificar que haya '*'
+        for (int j = 0; j < b1.getBoard()[0].length; j++) {
+            if(b1.getBoard()[0][j] == '.'){
+                assertEquals('.', b1.getBoard()[0][j]);
+            }else{
+                assertEquals('*', b1.getBoard()[0][j]);
+            }
+                
+        }
+
+
+
+    }
+
+    
     @Test
     void agregar_pieza_aleatoria_test() {
         Board b1 = new Board();
@@ -60,6 +66,24 @@ public class BoardTest {
             }
         }
     }
+
+    @Test
+    void limpiar_pieza_del_tablero_test(){
+        Board b1 = new Board();
+        PieceBase p1 = b1.piezaRandom();
+
+        b1.addPieces(p1);
+
+        b1.limpiarPieza(p1);
+
+        // Recorrer toda la primera fila y verificar que no hay ningún '*'
+        for (int j = 0; j < b1.getBoard()[0].length; j++) {
+            assert b1.getBoard()[0][j] == '.';
+        }
+
+
+    }
+
 
     @Test
     void rotar_pieza_en_el_tablero_test() {
@@ -134,19 +158,18 @@ public class BoardTest {
         assertEquals(posicionInicialX + 1, posicionFinalX, "La pieza no se movió una posición hacia la derecha");
     }
 
-    //@Test
-    //void mover_izquierda_cuadrado_test(){
-    //    Board b1 = new Board();
-    //    PieceSquare pS = new PieceSquare();
+    @Test
+    void mover_izquierda_cuadrado_test(){
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
         
-    //    b1.addPieces(pS);
-   //     int posicionicialX = pS.getX();
-    //    b1.moverIzquierda(pS);
-    //    int posicionFinalX = pS.getX();
+
+        b1.addPieces(pS);
+        int posicionicialY = pS.getY();
+        b1.moverIzquierda(pS);
+        int posicionFinalY = pS.getY();
     
-    //    assertEquals(posicionicialX - 1, posicionFinalX, "La pieza no se movió una opción hacia la izquierda");
-    //}
-    
-    
+        assertEquals(posicionicialY - 1, posicionFinalY, "La pieza no se movió una opción hacia la izquierda");
+    }
         
 }

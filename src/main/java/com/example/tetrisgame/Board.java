@@ -143,15 +143,15 @@ public class Board {
         // Volver a colocar la pieza en su nueva posición
         colocarPieza(piezaR);
     }
-    
+     
     public void moverIzquierda(PieceBase piezaR) {
         // Limpiar la posición actual de la pieza en el tablero
         limpiarPieza(piezaR);
     
-        // Verificar si la pieza puede moverse hacia la izquierda
-        if (piezaR.getX() > 0) {
-            // Si puede moverse, actualizar la posición X
-            piezaR.setX(piezaR.getX() - 1);
+            // Verificar si la pieza puede moverse hacia la izquierda (es decir, si Y > 0)
+        if (piezaR.getY() > 0) {
+            // Si puede moverse, actualizar la posición Y
+            piezaR.setY(piezaR.getY() - 1);
         }
     
         // Volver a colocar la pieza en su nueva posición
