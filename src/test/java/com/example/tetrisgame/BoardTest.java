@@ -150,19 +150,21 @@ public class BoardTest {
         Board b1 = new Board();
         PieceSquare pS = new PieceSquare();
         
+        
         b1.addPieces(pS);
-        int posicionInicialX = pS.getX();
+
+        int posicionInicialY = pS.getY();
         b1.moverDerecha(pS);
-        int posicionFinalX = pS.getX();
+       
+        int posicionFinalY = pS.getY();
     
-        assertEquals(posicionInicialX + 1, posicionFinalX, "La pieza no se movió una posición hacia la derecha");
+        assertEquals(posicionInicialY + 1, posicionFinalY, "La pieza no se movió una posición hacia la derecha");
     }
 
     @Test
     void mover_izquierda_cuadrado_test(){
         Board b1 = new Board();
         PieceSquare pS = new PieceSquare();
-        
 
         b1.addPieces(pS);
         int posicionicialY = pS.getY();
@@ -170,6 +172,6 @@ public class BoardTest {
         int posicionFinalY = pS.getY();
     
         assertEquals(posicionicialY - 1, posicionFinalY, "La pieza no se movió una opción hacia la izquierda");
-    }
+    }  
         
 }

@@ -10,9 +10,9 @@ public class Board {
 
     public Board() {
         piezaActual = piezaRandom();
-        tablero = new char[10][10];
+        tablero = new char[10][20];
         for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < 20; j++) {
                 tablero[i][j] = '.';
             }
         }
@@ -135,9 +135,9 @@ public class Board {
         limpiarPieza(piezaR);
     
         // Verificar si la pieza puede moverse hacia la derecha
-        if (piezaR.getX() + piezaR.getPieza().length < tablero[0].length) {
+        if (piezaR.getY() + piezaR.getPieza().length < 20) {
             // Si puede moverse, actualizar la posición X
-            piezaR.setX(piezaR.getX() + 1);
+            piezaR.setY(piezaR.getY() + 1);
         }
     
         // Volver a colocar la pieza en su nueva posición
