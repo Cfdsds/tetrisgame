@@ -173,5 +173,49 @@ public class BoardTest {
     
         assertEquals(posicionicialY - 1, posicionFinalY, "La pieza no se movió una opción hacia la izquierda");
     }  
+
+    
+    @Test
+    void bajar_pieza_cuadrada_y_despues_mover_a_la_derecha(){
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
+        
+        b1.addPieces(pS);
+        int posicionInicialY = pS.getY();
+        int posicionInicialX = pS.getX();
+
+        b1.bajarPieza(pS);
+        b1.bajarPieza(pS);
+        b1.moverDerecha(pS);
+        
+        int posicionFinalX = pS.getX();
+        int posicionFinalY = pS.getY();
+
+        assertEquals(posicionInicialX + 2, posicionFinalX, "La pieza no se movió una posición hacia la derecha");
+        assertEquals(posicionInicialY + 1, posicionFinalY, "La pieza no se movió una posición hacia la derecha");
+
+    }
+
+    @Test
+    void bajar_pieza__random_y_despues_mover_a_la_derecha(){
+        Board b1 = new Board();
+        PieceBase p1 = b1.piezaRandom();
+
+        
+        b1.addPieces(p1);
+        int posicionInicialY = p1.getY();
+        int posicionInicialX = p1.getX();
+
+        b1.bajarPieza(p1);
+        b1.moverDerecha(p1);
+        
+        int posicionFinalX = p1.getX();
+        int posicionFinalY = p1.getY();
+
+        assertEquals(posicionInicialX + 1, posicionFinalX, "La pieza no se movió una posición hacia abajo");
+        assertEquals(posicionInicialY + 1, posicionFinalY, "La pieza no se movió una posición hacia la derecha");
+
+    }
+
         
 }
