@@ -217,6 +217,26 @@ public class BoardTest {
 
     }
 
+    @Test
+    void bajar_pieza_cuadrada_hasta_el_final_test(){  
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
+            
+        b1.addPieces(pS);
+        int posicionInicialX = pS.getX();
+
+        // Mueve la pieza hacia abajo hasta que no pueda bajar más
+        for(int i = 0; i < 10; i++){
+            b1.bajarPieza(pS);
+        }
+        
+        int posicionFinalX = pS.getX();
+            
+        assertEquals(posicionInicialX + 8, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
+    }
+
+    
+
 
         
 }

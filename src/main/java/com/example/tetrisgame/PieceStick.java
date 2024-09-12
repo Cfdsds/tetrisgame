@@ -21,31 +21,23 @@ public class PieceStick extends PieceBase {
 
     }
 
-    public void rotate_left(){
-        switch (orientacion) {
-            case 1:
-            //**** 
+    public void rotate_left() {
+        if (orientacion == 1) {
             char[][] pi = new char[4][4];
-            pi[0][0]= '*';
-            pi[0][1]= '*';
-            pi[0][2]= '*';
-            pi[0][3]= '*';
+            pi[0][0] = '*';
+            pi[0][1] = '*';
+            pi[0][2] = '*';
+            pi[0][3] = '*';
             pieceStick = pi;
             orientacion = 2;
-            break;
-            case 2:
-            //  *
-            //  *
-            //  *
-            //  *
-                char[][] pd = new char[4][4];
-                pd[0][0] = '*';
-                pd[0][1] = '*';
-                pd[0][2] = '*';
-                pd[0][3] = '*';
-                pieceStick = pd;
-                orientacion = 1;
-                break;
+        } else {
+            char[][] pd = new char[4][4];
+            pd[0][1] = '*';
+            pd[1][1] = '*';
+            pd[2][1] = '*';
+            pd[3][1] = '*';
+            pieceStick = pd;
+            orientacion = 1;
         }
     }
 
@@ -55,10 +47,6 @@ public class PieceStick extends PieceBase {
 
     public int getOrientacion(){
         return orientacion;
-    }
-
-    public void setOrientacion(int valor){
-        orientacion = valor;
     }
 
 
