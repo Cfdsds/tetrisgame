@@ -84,13 +84,16 @@ public class Board {
     public void bajarPieza(PieceBase piezaR) {
         // Limpiar la posición actual de la pieza en el tablero
         limpiarPieza(piezaR);
-        
-        // Mover la pieza una posición hacia abajo
-        piezaR.setX(piezaR.getX() + 1);
-        
-        // Volver a colocar la pieza en su nueva posición
+    
+        // Si puede bajar, mueve la pieza hacia abajo
+        if (puedeBajar(piezaR)) {
+            piezaR.setX(piezaR.getX() + 1);
+        }
+    
+        // Volver a colocar la pieza en su nueva posición (o la misma si no pudo bajar)
         colocarPieza(piezaR);
     }
+    
     
     
 
@@ -158,6 +161,32 @@ public class Board {
         colocarPieza(piezaR);
     }
 
+    public boolean puedeBajar(PieceBase piezaR) {
+        char[][] pieza = piezaR.getPieza();
+        int posX = piezaR.getX();
+        int posY = piezaR.getY();
+    
+        // Verificar cada celda ocupada por la pieza
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int nuevaPosX = posX + i + 1; // La nueva posición en X al bajar
+                    int nuevaPosY = posY + j;
+    
+                    // Verificar si está en el límite inferior o hay otra pieza debajo
+                    if (nuevaPosX >= tablero.length || tablero[nuevaPosX][nuevaPosY] != '.') {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true; // Si todas las celdas pueden bajar
+    }
+    
+
+    
+    
+    
     
 }
     
