@@ -96,6 +96,7 @@ public class Board {
     
     
     
+    
 
     public void limpiarPieza(PieceBase piezaR) {
         char[][] pieza = piezaR.getPieza();
@@ -182,9 +183,30 @@ public class Board {
         }
         return true; // Si todas las celdas pueden bajar
     }
-    
 
+    public boolean puedeRotar(PieceBase piezaR) {
+        piezaR.rotate_right(); 
+        boolean puedeRotar = true;
     
+        char[][] pieza = piezaR.getPieza();
+        int posX = piezaR.getX();
+        int posY = piezaR.getY();
+    
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int nuevaPosX = posX + i;
+                    int nuevaPosY = posY + j;
+                    if (nuevaPosX >= tablero.length || nuevaPosX < 0 || nuevaPosY >= tablero[0].length || nuevaPosY < 0 || tablero[nuevaPosX][nuevaPosY] != '.') {
+                        puedeRotar = false;
+                    }
+                }
+            }
+        }
+    
+        piezaR.rotate_left(); 
+        return puedeRotar;
+    }
     
     
     

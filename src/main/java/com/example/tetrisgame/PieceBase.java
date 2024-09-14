@@ -45,6 +45,8 @@ public abstract class PieceBase {
 
     public void rotate_right() {
     }
-
+    
+    public void rotate_left() {
+    }
 
 }
