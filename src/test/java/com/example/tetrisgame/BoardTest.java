@@ -120,14 +120,15 @@ public class BoardTest {
         Board b1 = new Board();
         PieceBase pS = new PieceSquare();
         
-        b1.addPieces(pS);
-        
+        b1.addPieces(pS);        
         b1.bajarPieza(pS);
         
         // Recorrer toda la primera fila y verificar que no hay ningún '*'
         for (int j = 0; j < b1.getBoard()[0].length; j++) {
             assert b1.getBoard()[0][j] == '.';
         }
+        assert b1.estaVacia(0) == true;
+        assert b1.estaVacia(1) == false;
     }
 
     @Test
@@ -493,4 +494,51 @@ public class BoardTest {
             assert b1.getBoard()[9][j] == '.';
         } 
     } 
+
+    @Test
+    void agregar_lizquierda_test(){
+        Board b1 = new Board();
+        PieceLLeft ll = new PieceLLeft();
+        
+
+        b1.addPiecesEspecific(ll, 0, 5);
+
+        assert b1.getBoard()[0][6] == '*';
+        assert b1.getBoard()[1][6] == '*';
+        assert b1.getBoard()[2][5] == '*';
+        assert b1.getBoard()[2][6] == '*';
+        
+
+        b1.bajarPieza(ll);
+
+        assert b1.getBoard()[1][6] == '*';
+        assert b1.getBoard()[2][6] == '*';
+        assert b1.getBoard()[3][5] == '*';
+        assert b1.getBoard()[3][6] == '*';
+
+
+        b1.moverIzquierda(ll);
+
+        assert b1.getBoard()[1][5] == '*';
+        assert b1.getBoard()[2][5] == '*';
+        assert b1.getBoard()[3][4] == '*';
+        assert b1.getBoard()[3][5] == '*';
+
+
+        
+       /*  if (b1.puedeRotar(ll)) {
+            ll.rotate_left();
+        } */
+
+        //assert ll.getOrientacion() == 2;
+        //   ***
+        //     *
+
+        /* assert b1.getBoard()[1][5] == '*';
+        assert b1.getBoard()[2][5] == '*';
+        assert b1.getBoard()[3][4] == '*';
+        assert b1.getBoard()[3][5] == '*'; */
+
+        
+    }
 }

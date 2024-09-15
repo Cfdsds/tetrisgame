@@ -104,6 +104,10 @@ public class Board {
 
     public boolean addPiecesEspecific(PieceBase piezaE, int posX, int posY) {
         char[][] pieza = piezaE.getPieza();
+        
+        // Actualiza las coordenadas internas de la pieza
+        piezaE.setX(posX);  // Actualiza la coordenada X de la pieza
+        piezaE.setY(posY);  // Actualiza la coordenada Y de la pieza
 
         // Verifica si alguna posición donde se va a colocar la pieza está ocupada
         for (int i = 0; i < pieza.length; i++) {
@@ -153,12 +157,11 @@ public class Board {
         }else{
             // Volver a colocar la pieza en el mismo lugar
             colocarPieza(piezaR);
-            addPieces(piezaRandom());
         }
         
-        if(puedeRotar(piezaR)){
-            piezaR.rotate_left();
-        }
+        //if(puedeRotar(piezaR)){
+        //    piezaR.rotate_left();
+        //}
     
     }
     
@@ -252,27 +255,55 @@ public class Board {
         return true; // Si todas las celdas pueden bajar
     }
 
-    public boolean puedeRotar(PieceBase piezaR) {
-        boolean puedeRotar = true;
-    
-        char[][] pieza = piezaR.getPieza();
-        int posX = piezaR.getX();
-        int posY = piezaR.getY();
-    
-        for (int i = 0; i < pieza.length; i++) {
-            for (int j = 0; j < pieza[i].length; j++) {
-                if (pieza[i][j] != '.') {
+    public boolean puedeRotar(PieceBase pieza) {
+        // Guardamos las posiciones originales de la pieza
+        char[][] posicionesOriginales = pieza.getPieza();
+        int posX = pieza.getX();
+        int posY = pieza.getY();
+
+        // Creamos una copia de las posiciones originales para restaurarlas si es necesario
+        char[][] copiaPosiciones = new char[posicionesOriginales.length][];
+        for (int i = 0; i < posicionesOriginales.length; i++) {
+            copiaPosiciones[i] = posicionesOriginales[i].clone();
+        }
+
+        // Rotamos temporalmente la pieza
+        pieza.rotate_left();
+        char[][] posicionesRotadas = pieza.getPieza();
+
+        // Verificamos si la rotación está dentro de los límites del tablero y no colisiona
+        for (int i = 0; i < posicionesRotadas.length; i++) {
+            for (int j = 0; j < posicionesRotadas[i].length; j++) {
+                if (posicionesRotadas[i][j] != '.') {
                     int nuevaPosX = posX + i;
                     int nuevaPosY = posY + j;
-                    if (nuevaPosX >= tablero.length || nuevaPosX < 0 || nuevaPosY >= tablero[0].length || nuevaPosY < 0 || tablero[nuevaPosX][nuevaPosY] != '.') {
-                        puedeRotar = false;
+
+                    // Verificamos si la pieza está fuera de los límites del tablero
+                    if (nuevaPosX < 0 || nuevaPosX >= tablero.length || nuevaPosY < 0 || nuevaPosY >= tablero[0].length) {
+                        // Restauramos la pieza a su estado original
+                        pieza.setPieza(copiaPosiciones);
+                        return false;
+                    }
+
+                    // Verificamos si la nueva posición colisiona con otra pieza
+                    if (tablero[nuevaPosX][nuevaPosY] != '.') {
+                        // Restauramos la pieza a su estado original
+                        pieza.setPieza(copiaPosiciones);
+                        return false;
                     }
                 }
             }
         }
-    
-        return puedeRotar;
+
+        // Restauramos la pieza a su estado original si no puede rotar
+        pieza.setPieza(copiaPosiciones);
+        return true;
     }
+
+
+
+
+
 
     
     public void llegarAlFinal(PieceBase piezaAct) {
@@ -284,6 +315,15 @@ public class Board {
     public boolean estaCompleta(int fila) {
         for (int j = 0; j < tablero[0].length; j++) {
             if(tablero[fila][j] == '.'){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean estaVacia(int fila) {
+        for (int j = 0; j < 20; j++) {
+            if(tablero[fila][j] == '*'){
                 return false;
             }
         }
