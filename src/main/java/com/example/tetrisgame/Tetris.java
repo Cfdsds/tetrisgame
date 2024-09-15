@@ -3,11 +3,18 @@ package com.example.tetrisgame;
 public class Tetris extends Clock {
     public Board board;
     int filasCompletadas;
+    int canTic;
+    public boolean partidaEnCurso;
 
     public Tetris() {
         board = new Board();
-        Clock c1 = new Clock();
         this.filasCompletadas = 0;
+        this.canTic = 0;
+    }
+
+    public void iniciarJuego(){
+        this.partidaEnCurso = true;
+    
     }
 
     public static void ganar() {

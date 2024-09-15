@@ -274,10 +274,6 @@ public class Board {
         return puedeRotar;
     }
 
-
-    public void detenerPieza(PieceBase piezaR) {
-        
-    }
     
     public void llegarAlFinal(PieceBase piezaAct) {
         //agregar nueva pieza(esta mal)
