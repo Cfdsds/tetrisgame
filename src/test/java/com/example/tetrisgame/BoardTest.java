@@ -433,4 +433,64 @@ public class BoardTest {
         assertEquals(false, b1.addPieces(pR));
     }
 
+    @Test
+    void borrar_fila_completa_test(){
+        Tetris t = new Tetris();
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
+
+        for(int j = 0; j < 20; j++){
+            b1.addPiecesEspecific(pS, 9, j);
+        }
+        
+        if(b1.estaCompleta(9)){
+            t.filasCompletadas++;
+            b1.borrarFila(9);
+        }
+        
+        assertEquals(false, b1.estaCompleta(9));
+        assertEquals(1, t.filasCompletadas);
+    }
+
+    @Test
+    void borrar_fila_completa_y_que_bajen_los_bloques_de_arriba_test(){
+        Tetris t = new Tetris();
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
+
+        for(int j = 0; j < 20; j++){
+            b1.addPiecesEspecific(pS, 8, j);
+        }
+
+        for(int j = 0; j < 10; j++){
+            b1.addPiecesEspecific(pS, 6, j);
+        }
+
+        for (int j = 0; j < b1.getBoard()[9].length; j++) {
+            assert b1.getBoard()[9][j] == '*';
+        } 
+
+        if(b1.estaCompleta(9)){
+            t.filasCompletadas++;
+            b1.borrarFila(9);
+        }
+        
+        for (int j = 0; j < b1.getBoard()[9].length; j++) {
+            assert b1.getBoard()[9][j] == '*';
+        } 
+
+        if(b1.estaCompleta(9)){
+            t.filasCompletadas++;
+            b1.borrarFila(9);
+        }
+
+
+        for (int j = 0; j <= 9; j++) {
+            assert b1.getBoard()[9][j] == '*';
+        } 
+
+        for (int j = 10; j < 20; j++) {
+            assert b1.getBoard()[9][j] == '.';
+        } 
+    } 
 }

@@ -284,6 +284,45 @@ public class Board {
        colocarPieza(piezaAct);
        addPieces(piezaRandom());
     }
+
+    public boolean estaCompleta(int fila) {
+        for (int j = 0; j < tablero[0].length; j++) {
+            if(tablero[fila][j] == '.'){
+                return false;
+            }
+        }
+        return true;
+    }
     
+
+    public boolean borrarFila(int fila) {
+        boolean filaCompleta = true;
+    
+        // Verificar si la fila está completa
+        for (int j = 0; j < 20; j++) {
+            if (tablero[fila][j] != '*') {
+                filaCompleta = false;
+                break;
+            }
+        }
+    
+        if (filaCompleta) {
+            // Desplazar las filas superiores hacia abajo
+            for (int i = fila - 1; i >= 0; i--) {
+                for (int j = 0; j < 20; j++) {
+                    tablero[i + 1][j] = tablero[i][j];
+                }
+            }
+    
+            // Limpiar la primera fila
+            for (int j = 0; j < 20; j++) {
+                tablero[0][j] = '.';
+            }
+    
+            return true; // Fila eliminada correctamente
+        } else {
+            return false; // Fila no completa
+        }
+    }
 }
     
