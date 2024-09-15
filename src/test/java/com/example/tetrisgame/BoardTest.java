@@ -235,8 +235,32 @@ public class BoardTest {
         assertEquals(posicionInicialX + 8, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
     }
 
-    
-
-
+    //a veces anda a veces no, yo creo que es por el stick que es mas largo
+    @Test
+    void bajar_pieza_random_hasta_el_final_test(){  
+        Board b1 = new Board();
+        PieceBase p1 = b1.piezaRandom();
         
+        b1.addPieces(p1);
+        int posicionicialX = p1.getX();
+        
+        // Mueve la pieza hacia abajo hasta que no pueda bajar más
+        for(int i = 0; i < 10; i++){
+            b1.bajarPieza(p1);
+        }
+
+        int posicionFinalX = p1.getX();
+
+       /*  for (int j = 0; j < 20; j++) {
+            if(b1.getBoard()[10][j] == '.'){
+                assertEquals('.', b1.getBoard()[10][j]);
+            }else{
+                assertEquals('*', b1.getBoard()[10][j]);
+            }
+                
+        } */
+
+        assertEquals(posicionicialX + 8, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
+    }
+  
 }

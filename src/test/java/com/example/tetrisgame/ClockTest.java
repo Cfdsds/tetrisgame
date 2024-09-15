@@ -15,8 +15,6 @@ public class ClockTest {
         c1.tic();
 
         assertEquals(1, c1.getTick());
-
-
     }
     
 

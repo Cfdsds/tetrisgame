@@ -208,7 +208,11 @@ public class Board {
         return puedeRotar;
     }
     
-    
+    public boolean llegarAlFinal(PieceBase piezaR) {
+        //agregar nueva pieza
+        addPieces(piezaR);
+        return !puedeBajar(piezaR);
+    }
     
 }
     

@@ -6,5 +6,6 @@ public class TetrisTest {
     public void crearTetris() {
         Tetris t = new Tetris();
         assert t != null;
+
     }
 }
