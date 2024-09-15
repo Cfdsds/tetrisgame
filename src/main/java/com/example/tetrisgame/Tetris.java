@@ -12,7 +12,7 @@ public class Tetris extends Clock {
         //
     }
 
-    public void perder() {
+    public static void perder() {
         //
     }
 }

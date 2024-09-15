@@ -236,21 +236,21 @@ public class BoardTest {
     }
 
     @Test
-    void bajar_pieza_cuadrada2_y_palo_test(){
+    void bajar_pieza_cuadrada_y_palo_test(){
         Board b1 = new Board();
         Clock c1 = new Clock();
         PieceSquare pS = new PieceSquare();
         PieceStick pSt = new PieceStick();
 
         // Agregar la pieza cuadrada y bajarla completamente
-        b1.addPieces(pS);
+        b1.addPiecesEspecific(pS, 0, 0);
         for(int i = 0; i < 10; i++){
             c1.tic();
             b1.bajarPieza(pS);
         }
 
         // Agregar la pieza palo y bajarla
-        b1.addPieces(pSt);
+        b1.addPiecesEspecific(pSt, 0, 0);
         for(int i = 0; i < 10; i++){
             c1.tic();
             b1.bajarPieza(pSt);
@@ -275,24 +275,31 @@ public class BoardTest {
         PieceStick pSt = new PieceStick();
 
         // Agregar la pieza cuadrada y bajarla completamente
-        b1.addPieces(pS);
+        b1.addPiecesEspecific(pS,0,0);
         for(int i = 0; i < 10; i++){
             c1.tic();
             b1.bajarPieza(pS);
         }
 
         // Agregar la pieza palo y bajarla
-        b1.addPieces(pSt);
-        for(int i = 0; i < 10; i++){
+        b1.addPiecesEspecific(pSt, 0, 0);
+        for(int i = 1; i < 4; i++){
             c1.tic();
             b1.bajarPieza(pSt);
+
         }
+
+        pSt.rotate_right();
+        c1.tic();
+        b1.bajarPieza(pSt);
+
+
 
         // Verificar la posición del palo sin que haya sobrescritura
         assert b1.getBoard()[4][0] == '*';
-        assert b1.getBoard()[5][0] == '*';
-        assert b1.getBoard()[6][0] == '*';
-        assert b1.getBoard()[7][0] == '*';
+        assert b1.getBoard()[4][1] == '*';
+        assert b1.getBoard()[4][2] == '*';
+        assert b1.getBoard()[4][3] == '*';
         assert b1.getBoard()[8][0] == '*';
         assert b1.getBoard()[9][0] == '*';
         assert b1.getBoard()[8][1] == '*';
@@ -340,7 +347,7 @@ public class BoardTest {
         PieceSquare pS1 = new PieceSquare();
        //PieceSquare pS2 = new PieceSquare();
 
-        b1.addPieces(pS1);
+        b1.addPiecesEspecific(pS1,0,0);
 
         for(int i = 0; i < 11; i++){
             b1.bajarPieza(pS1);
@@ -378,9 +385,52 @@ public class BoardTest {
         assert b1.getBoard()[1][2] == '*';
         assert b1.getBoard()[1][3] == '*';        
 
-        
     }
 
 
+    @Test
+    void llenar_primeras_2_filas_test(){
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
+        boolean bandera1 = false;
+        boolean bandera2 = false;
     
+
+        for(int j = 0; j < 10; j++){
+            b1.addPiecesEspecific(pS, 0, j);
+        }
+        
+        for(int j = 0; j < 10; j++){
+            if (b1.getBoard()[0][j] == '.'){
+                bandera1 = true;
+            }
+        }
+
+        for(int j = 0; j < 10; j++){
+            if (b1.getBoard()[1][j] == '.'){
+                bandera2 = true;
+            }
+        }
+
+        assertEquals(false, bandera1);
+        assertEquals(false, bandera2);
+        
+    }
+    
+
+    @Test
+    void perder_juego_test(){
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
+        PieceBase pR = b1.piezaRandom();
+
+        for(int j = 0; j < 20; j++){
+            b1.addPiecesEspecific(pS, 0, j);
+        }
+
+        b1.addPieces(pR);
+        
+        assertEquals(false, b1.addPieces(pR));
+    }
+
 }

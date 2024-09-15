@@ -77,6 +77,7 @@ public class Board {
                     if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
                         // Si ya hay algo en la celda del tablero, cancela la operación
                         if (tablero[boardX][boardY] != '.') {
+                            
                             return false; // La operación falla si una posición está ocupada
                         }
                     }
@@ -114,6 +115,7 @@ public class Board {
                     if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
                         // Si ya hay algo en la celda del tablero, cancela la operación
                         if (tablero[boardX][boardY] != '.') {
+                            Tetris.perder();
                             return false; // La operación falla si una posición está ocupada
                         }
                     }
