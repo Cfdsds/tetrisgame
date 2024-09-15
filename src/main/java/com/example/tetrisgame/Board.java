@@ -81,6 +81,44 @@ public class Board {
         }
     }
 
+    public boolean addPiecesEspecific(PieceBase piezaE, int posX, int posY) {
+        char[][] pieza = piezaE.getPieza();
+
+        // Verifica si alguna posición donde se va a colocar la pieza está ocupada
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int boardX = posX + i; // Fila en el tablero
+                    int boardY = posY + j; // Columna en el tablero
+
+                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
+                        // Si ya hay algo en la celda del tablero, cancela la operación
+                        if (tablero[boardX][boardY] != '.') {
+                            return false; // La operación falla si una posición está ocupada
+                        }
+                    }
+                }
+            }
+        }
+
+        // Si no se encontraron colisiones, coloca la pieza
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int boardX = posX + i;
+                    int boardY = posY + j;
+
+                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
+                        tablero[boardX][boardY] = '*'; // Coloca la pieza
+                    }
+                }
+            }
+        }
+
+        return true; // La operación fue exitosa
+    }
+
+
     public void bajarPieza(PieceBase piezaR) {
         // Limpiar la posición actual de la pieza en el tablero
         limpiarPieza(piezaR);
@@ -89,10 +127,15 @@ public class Board {
         if (puedeBajar(piezaR)) {
             piezaR.setX(piezaR.getX() + 1);
             colocarPieza(piezaR);
+            
         }else{
             // Volver a colocar la pieza en el mismo lugar
             colocarPieza(piezaR);
             addPieces(piezaRandom());
+        }
+        
+        if(puedeRotar(piezaR)){
+            piezaR.rotate_left();
         }
     
     }
@@ -188,7 +231,6 @@ public class Board {
     }
 
     public boolean puedeRotar(PieceBase piezaR) {
-        piezaR.rotate_right(); 
         boolean puedeRotar = true;
     
         char[][] pieza = piezaR.getPieza();
@@ -207,7 +249,6 @@ public class Board {
             }
         }
     
-        piezaR.rotate_left(); 
         return puedeRotar;
     }
 

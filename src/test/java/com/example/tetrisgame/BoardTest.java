@@ -267,6 +267,38 @@ public class BoardTest {
         assert b1.getBoard()[9][1] == '*';
     }
 
+    @Test
+    void bajar_pieza_cuadrada_y_rotar_palo_test(){
+        Board b1 = new Board();
+        Clock c1 = new Clock();
+        PieceSquare pS = new PieceSquare();
+        PieceStick pSt = new PieceStick();
+
+        // Agregar la pieza cuadrada y bajarla completamente
+        b1.addPieces(pS);
+        for(int i = 0; i < 10; i++){
+            c1.tic();
+            b1.bajarPieza(pS);
+        }
+
+        // Agregar la pieza palo y bajarla
+        b1.addPieces(pSt);
+        for(int i = 0; i < 10; i++){
+            c1.tic();
+            b1.bajarPieza(pSt);
+        }
+
+        // Verificar la posición del palo sin que haya sobrescritura
+        assert b1.getBoard()[4][0] == '*';
+        assert b1.getBoard()[5][0] == '*';
+        assert b1.getBoard()[6][0] == '*';
+        assert b1.getBoard()[7][0] == '*';
+        assert b1.getBoard()[8][0] == '*';
+        assert b1.getBoard()[9][0] == '*';
+        assert b1.getBoard()[8][1] == '*';
+        assert b1.getBoard()[9][1] == '*';
+    }
+
 
 
     //a veces anda a veces no, yo creo que es por el stick que es mas largo
@@ -325,6 +357,28 @@ public class BoardTest {
         assert b1.getBoard()[9][1] == '*';
 
 
+    }
+
+    
+    @Test
+    void agregar_2_cuadradros_test(){
+        Board b1 = new Board();
+        PieceSquare pS = new PieceSquare();
+        for(int j = 0; j < 3; j++){
+            b1.addPiecesEspecific(pS, 0, j);
+        }
+
+        assert b1.getBoard()[0][0] == '*';
+        assert b1.getBoard()[0][1] == '*';
+        assert b1.getBoard()[1][0] == '*';
+        assert b1.getBoard()[1][1] == '*';
+
+        assert b1.getBoard()[0][2] == '*';
+        assert b1.getBoard()[0][3] == '*'; 
+        assert b1.getBoard()[1][2] == '*';
+        assert b1.getBoard()[1][3] == '*';        
+
+        
     }
 
 
