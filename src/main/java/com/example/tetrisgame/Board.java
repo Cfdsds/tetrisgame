@@ -51,12 +51,12 @@ public class Board {
     
 
 
-    public void addPieces(PieceBase piezaR) {
+    public boolean addPieces(PieceBase piezaR) {
         Random random = new Random();
         
         // Calcula el máximo valor para Y (columnas)
         int maxY = tablero[0].length - piezaR.getPieza()[0].length;
-        int randomY = 0; // Genera una posición Y aleatoria
+        int randomY = random.nextInt(maxY + 1); // Genera una posición Y aleatoria
         int fixedX = 0; // X siempre será 0 para que la pieza aparezca en la primera fila
         
         piezaR.setX(fixedX); // Establece X en 0 (fila)
@@ -67,18 +67,38 @@ public class Board {
         int posY = piezaR.getY(); // Columna
         
     
+        // Verifica si alguna posición donde se va a colocar la pieza está ocupada
         for (int i = 0; i < pieza.length; i++) {
             for (int j = 0; j < pieza[i].length; j++) {
                 if (pieza[i][j] != '.') {
                     int boardX = posX + i; // Fila en el tablero
                     int boardY = posY + j; // Columna en el tablero
+
                     if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
-                        // Asegúrate de que no estés sobrescribiendo una posición ocupada
-                        tablero[boardX][boardY] = '*';
+                        // Si ya hay algo en la celda del tablero, cancela la operación
+                        if (tablero[boardX][boardY] != '.') {
+                            return false; // La operación falla si una posición está ocupada
+                        }
                     }
                 }
             }
         }
+
+        // Si no se encontraron colisiones, coloca la pieza
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int boardX = posX + i;
+                    int boardY = posY + j;
+
+                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
+                        tablero[boardX][boardY] = '*'; // Coloca la pieza
+                    }
+                }
+            }
+        }
+
+        return true; // La operación fue exitosa
     }
 
     public boolean addPiecesEspecific(PieceBase piezaE, int posX, int posY) {
