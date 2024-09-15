@@ -12,10 +12,10 @@ public class PieceStick extends PieceBase {
             }
         }
 
-        pieceStick[0][1] = '*';
-        pieceStick[1][1] = '*';
-        pieceStick[2][1] = '*';
-        pieceStick[3][1] = '*';
+        pieceStick[0][0] = '*';
+        pieceStick[1][0] = '*';
+        pieceStick[2][0] = '*';
+        pieceStick[3][0] = '*';
 
         orientacion = 1;
 
@@ -32,10 +32,10 @@ public class PieceStick extends PieceBase {
             orientacion = 2;
         } else {
             char[][] pd = new char[4][4];
-            pd[0][1] = '*';
-            pd[1][1] = '*';
-            pd[2][1] = '*';
-            pd[3][1] = '*';
+            pd[0][0] = '*';
+            pd[1][0] = '*';
+            pd[2][0] = '*';
+            pd[3][0] = '*';
             pieceStick = pd;
             orientacion = 1;
         }

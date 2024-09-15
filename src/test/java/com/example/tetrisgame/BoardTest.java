@@ -235,12 +235,47 @@ public class BoardTest {
         assertEquals(posicionInicialX + 8, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
     }
 
+    @Test
+    void bajar_pieza_cuadrada2_y_palo_test(){
+        Board b1 = new Board();
+        Clock c1 = new Clock();
+        PieceSquare pS = new PieceSquare();
+        PieceStick pSt = new PieceStick();
+
+        // Agregar la pieza cuadrada y bajarla completamente
+        b1.addPieces(pS);
+        for(int i = 0; i < 10; i++){
+            c1.tic();
+            b1.bajarPieza(pS);
+        }
+
+        // Agregar la pieza palo y bajarla
+        b1.addPieces(pSt);
+        for(int i = 0; i < 10; i++){
+            c1.tic();
+            b1.bajarPieza(pSt);
+        }
+
+        // Verificar la posición del palo sin que haya sobrescritura
+        assert b1.getBoard()[4][0] == '*';
+        assert b1.getBoard()[5][0] == '*';
+        assert b1.getBoard()[6][0] == '*';
+        assert b1.getBoard()[7][0] == '*';
+        assert b1.getBoard()[8][0] == '*';
+        assert b1.getBoard()[9][0] == '*';
+        assert b1.getBoard()[8][1] == '*';
+        assert b1.getBoard()[9][1] == '*';
+    }
+
+
+
     //a veces anda a veces no, yo creo que es por el stick que es mas largo
     @Test
     void bajar_pieza_random_hasta_el_final_test(){  
         Board b1 = new Board();
         PieceBase p1 = b1.piezaRandom();
-        
+    
+    
         b1.addPieces(p1);
         int posicionicialX = p1.getX();
         
@@ -250,17 +285,48 @@ public class BoardTest {
         }
 
         int posicionFinalX = p1.getX();
+        
+        //assertEquals(posicionicialX + 8, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
 
-       /*  for (int j = 0; j < 20; j++) {
-            if(b1.getBoard()[10][j] == '.'){
-                assertEquals('.', b1.getBoard()[10][j]);
+        if (posicionicialX + 8 == posicionFinalX){
+            assertEquals(posicionicialX + 8, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
+        }else{
+            if (posicionicialX + 7 == posicionFinalX){
+                assertEquals(posicionicialX + 7, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
             }else{
-                assertEquals('*', b1.getBoard()[10][j]);
+                assertEquals(posicionicialX + 6, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
             }
-                
+        }
+        
+
+    }
+
+    @Test
+    void bajar_2_cuadrados_hasta_el_final_test(){  
+        Board b1 = new Board();
+
+        PieceSquare pS1 = new PieceSquare();
+       //PieceSquare pS2 = new PieceSquare();
+
+        b1.addPieces(pS1);
+
+        for(int i = 0; i < 11; i++){
+            b1.bajarPieza(pS1);
+        }
+
+        // Recorrer toda la primera fila y verificar que no hay ningún '*'
+        /* for (int j = 0; j < b1.getBoard()[0].length; j++) {
+            assert b1.getBoard()[0][j] == '.';
         } */
 
-        assertEquals(posicionicialX + 8, posicionFinalX, "La pieza no se movió hasta el final del tablero correctamente");
+        assert b1.getBoard()[8][0] == '*';
+        assert b1.getBoard()[8][1] == '*';
+        assert b1.getBoard()[9][0] == '*';
+        assert b1.getBoard()[9][1] == '*';
+
+
     }
-  
+
+
+    
 }

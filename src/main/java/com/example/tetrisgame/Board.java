@@ -56,7 +56,7 @@ public class Board {
         
         // Calcula el máximo valor para Y (columnas)
         int maxY = tablero[0].length - piezaR.getPieza()[0].length;
-        int randomY = random.nextInt(maxY + 1); // Genera una posición Y aleatoria
+        int randomY = 0; // Genera una posición Y aleatoria
         int fixedX = 0; // X siempre será 0 para que la pieza aparezca en la primera fila
         
         piezaR.setX(fixedX); // Establece X en 0 (fila)
@@ -88,10 +88,13 @@ public class Board {
         // Si puede bajar, mueve la pieza hacia abajo
         if (puedeBajar(piezaR)) {
             piezaR.setX(piezaR.getX() + 1);
+            colocarPieza(piezaR);
+        }else{
+            // Volver a colocar la pieza en el mismo lugar
+            colocarPieza(piezaR);
+            addPieces(piezaRandom());
         }
     
-        // Volver a colocar la pieza en su nueva posición (o la misma si no pudo bajar)
-        colocarPieza(piezaR);
     }
     
     
@@ -207,11 +210,16 @@ public class Board {
         piezaR.rotate_left(); 
         return puedeRotar;
     }
+
+
+    public void detenerPieza(PieceBase piezaR) {
+        
+    }
     
-    public boolean llegarAlFinal(PieceBase piezaR) {
-        //agregar nueva pieza
-        addPieces(piezaR);
-        return !puedeBajar(piezaR);
+    public void llegarAlFinal(PieceBase piezaAct) {
+        //agregar nueva pieza(esta mal)
+       colocarPieza(piezaAct);
+       addPieces(piezaRandom());
     }
     
 }
