@@ -159,9 +159,6 @@ public class Board {
             colocarPieza(piezaR);
         }
         
-        //if(puedeRotar(piezaR)){
-        //    piezaR.rotate_left();
-        //}
     
     }
     
@@ -254,57 +251,7 @@ public class Board {
         }
         return true; // Si todas las celdas pueden bajar
     }
-
-    public boolean puedeRotar(PieceBase pieza) {
-        // Guardamos las posiciones originales de la pieza
-        char[][] posicionesOriginales = pieza.getPieza();
-        int posX = pieza.getX();
-        int posY = pieza.getY();
-
-        // Creamos una copia de las posiciones originales para restaurarlas si es necesario
-        char[][] copiaPosiciones = new char[posicionesOriginales.length][];
-        for (int i = 0; i < posicionesOriginales.length; i++) {
-            copiaPosiciones[i] = posicionesOriginales[i].clone();
-        }
-
-        // Rotamos temporalmente la pieza
-        pieza.rotate_left();
-        char[][] posicionesRotadas = pieza.getPieza();
-
-        // Verificamos si la rotación está dentro de los límites del tablero y no colisiona
-        for (int i = 0; i < posicionesRotadas.length; i++) {
-            for (int j = 0; j < posicionesRotadas[i].length; j++) {
-                if (posicionesRotadas[i][j] != '.') {
-                    int nuevaPosX = posX + i;
-                    int nuevaPosY = posY + j;
-
-                    // Verificamos si la pieza está fuera de los límites del tablero
-                    if (nuevaPosX < 0 || nuevaPosX >= tablero.length || nuevaPosY < 0 || nuevaPosY >= tablero[0].length) {
-                        // Restauramos la pieza a su estado original
-                        pieza.setPieza(copiaPosiciones);
-                        return false;
-                    }
-
-                    // Verificamos si la nueva posición colisiona con otra pieza
-                    if (tablero[nuevaPosX][nuevaPosY] != '.') {
-                        // Restauramos la pieza a su estado original
-                        pieza.setPieza(copiaPosiciones);
-                        return false;
-                    }
-                }
-            }
-        }
-
-        // Restauramos la pieza a su estado original si no puede rotar
-        pieza.setPieza(copiaPosiciones);
-        return true;
-    }
-
-
-
-
-
-
+    
     
     public void llegarAlFinal(PieceBase piezaAct) {
         //agregar nueva pieza(esta mal)
@@ -360,5 +307,29 @@ public class Board {
             return false; // Fila no completa
         }
     }
+    
+    public boolean puedeAgregar(PieceBase pieza) {
+        int anchoPieza = pieza.getPieza()[0].length; // Obtener el ancho de la pieza desde su matriz
+        
+        int espaciosLibres = 0;
+        
+        for (int j = 0; j < tablero[0].length; j++) {
+            if (tablero[0][j] == '.') {
+                espaciosLibres++;
+            } else {
+                espaciosLibres = 0; // Reinicia si encuentra un obstáculo
+            }
+    
+            // Si encontramos suficientes espacios libres contiguos para la pieza
+            if (espaciosLibres >= anchoPieza) {
+                return true;
+            }
+        }
+        
+        return false; // No hay suficiente espacio contiguo para la pieza
+    }
+    
+    
+    
 }
     

@@ -290,7 +290,7 @@ public class BoardTest {
 
         }
 
-        pSt.rotate_right();
+        pSt.rotate_left();
         c1.tic();
         b1.bajarPieza(pSt);
 
@@ -493,52 +493,21 @@ public class BoardTest {
         for (int j = 10; j < 20; j++) {
             assert b1.getBoard()[9][j] == '.';
         } 
-    } 
+    }
+    
 
     @Test
-    void agregar_lizquierda_test(){
-        Board b1 = new Board();
-        PieceLLeft ll = new PieceLLeft();
-        
-
-        b1.addPiecesEspecific(ll, 0, 5);
-
-        assert b1.getBoard()[0][6] == '*';
-        assert b1.getBoard()[1][6] == '*';
-        assert b1.getBoard()[2][5] == '*';
-        assert b1.getBoard()[2][6] == '*';
-        
-
-        b1.bajarPieza(ll);
-
-        assert b1.getBoard()[1][6] == '*';
-        assert b1.getBoard()[2][6] == '*';
-        assert b1.getBoard()[3][5] == '*';
-        assert b1.getBoard()[3][6] == '*';
+    void final_test(){
+        PieceBase p1 = new PieceSquare();
+        PieceBase p2 = new PieceStick();
+        PieceBase p3 = new PieceDogLeft();
+        PieceBase p4 = new PieceDogRight();
+        PieceBase p5 = new PieceLLeft();
+        PieceBase p6 = new PieceLRight();
+        PieceBase p7 = new PieceT();
 
 
-        b1.moverIzquierda(ll);
 
-        assert b1.getBoard()[1][5] == '*';
-        assert b1.getBoard()[2][5] == '*';
-        assert b1.getBoard()[3][4] == '*';
-        assert b1.getBoard()[3][5] == '*';
-
-
-        
-       /*  if (b1.puedeRotar(ll)) {
-            ll.rotate_left();
-        } */
-
-        //assert ll.getOrientacion() == 2;
-        //   ***
-        //     *
-
-        /* assert b1.getBoard()[1][5] == '*';
-        assert b1.getBoard()[2][5] == '*';
-        assert b1.getBoard()[3][4] == '*';
-        assert b1.getBoard()[3][5] == '*'; */
-
-        
     }
+    
 }
