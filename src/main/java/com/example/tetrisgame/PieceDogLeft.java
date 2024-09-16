@@ -33,7 +33,7 @@ public class PieceDogLeft extends PieceBase {
             pdLi[1][0]= '*';
             pdLi[2][0]= '*';
             pieceDogL = pdLi;
-            orientacion = 2;
+            setOrientacion(2);
             break;
 
         case 2://abajo y arriba
@@ -45,7 +45,7 @@ public class PieceDogLeft extends PieceBase {
             pdRa[1][1] = '*';
             pdRa[1][2] = '*';
             pieceDogL = pdRa;
-            orientacion = 1;
+            setOrientacion(1);
             break;     
         }
     }
@@ -59,7 +59,11 @@ public class PieceDogLeft extends PieceBase {
     public int getOrientacion(){
         return orientacion;
     }
-        
+
+   
+    public void setOrientacion(int valor){
+        orientacion = valor;
+    }
 
     public char[][]getPieceDogLeft(){
         return pieceDogL;

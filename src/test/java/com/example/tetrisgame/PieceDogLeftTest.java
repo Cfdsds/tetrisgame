@@ -54,4 +54,15 @@ public class PieceDogLeftTest {
         assert pdl.getPieceDogLeft()[1][1] == '*';
         assert pdl.getPieceDogLeft()[1][2] == '*';
     }
+
+    @Test
+    void rotar_dog_left() {
+        Board board = new Board();
+        PieceBase dL = new PieceDogLeft();
+
+        board.addPieces(dL);
+        dL.rotate_left();
+
+        assert dL.getOrientacion() == 2;
+    }
 }

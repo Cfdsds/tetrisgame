@@ -158,12 +158,29 @@ public class Board {
             // Volver a colocar la pieza en el mismo lugar
             colocarPieza(piezaR);
         }
-        
-    
     }
     
+    public boolean puedeBajar(PieceBase piezaR) {
+        char[][] pieza = piezaR.getPieza();
+        int posX = piezaR.getX();
+        int posY = piezaR.getY();
     
+        // Verificar cada celda ocupada por la pieza
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] != '.') {
+                    int nuevaPosX = posX + i + 1; // La nueva posición en X al bajar
+                    int nuevaPosY = posY + j;
     
+                    // Verificar si está en el límite inferior o hay otra pieza debajo
+                    if (nuevaPosX >= tablero.length || tablero[nuevaPosX][nuevaPosY] != '.') {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true; // Si todas las celdas pueden bajar
+    }  
     
 
     public void limpiarPieza(PieceBase piezaR) {
@@ -230,28 +247,7 @@ public class Board {
         colocarPieza(piezaR);
     }
 
-    public boolean puedeBajar(PieceBase piezaR) {
-        char[][] pieza = piezaR.getPieza();
-        int posX = piezaR.getX();
-        int posY = piezaR.getY();
-    
-        // Verificar cada celda ocupada por la pieza
-        for (int i = 0; i < pieza.length; i++) {
-            for (int j = 0; j < pieza[i].length; j++) {
-                if (pieza[i][j] != '.') {
-                    int nuevaPosX = posX + i + 1; // La nueva posición en X al bajar
-                    int nuevaPosY = posY + j;
-    
-                    // Verificar si está en el límite inferior o hay otra pieza debajo
-                    if (nuevaPosX >= tablero.length || tablero[nuevaPosX][nuevaPosY] != '.') {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true; // Si todas las celdas pueden bajar
-    }
-    
+  
     
     public void llegarAlFinal(PieceBase piezaAct) {
         //agregar nueva pieza(esta mal)

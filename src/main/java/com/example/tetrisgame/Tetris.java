@@ -14,14 +14,14 @@ public class Tetris extends Clock {
 
     public void iniciarJuego(){
         this.partidaEnCurso = true;
-    
     }
 
-    public static void ganar() {
-        //
+    public void ganar() {
+        this.partidaEnCurso = false;
+        System.out.println("Has ganado");
     }
 
     public static void perder() {
-        //
+        System.out.println("Has perdido");
     }
 }

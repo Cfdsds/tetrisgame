@@ -40,7 +40,7 @@ public abstract class PieceBase {
     }
 
     public void setOrientacion(int valor){
-        orientacion = valor;
+        this.orientacion = valor;
     }
 
     public void rotate_right() {
