@@ -2,7 +2,6 @@ package com.example.tetrisgame;
 
 public class PieceLLeft extends PieceBase {
     private char[][] piecelleft;
-    public int orientacion;
     public PieceLLeft(){
 
         piecelleft = new char[3][3];
@@ -18,7 +17,7 @@ public class PieceLLeft extends PieceBase {
             piecelleft[0][1] = '*';
             
           
-            orientacion = 1;
+            setOrientacion(1);
     }   
 
     public void rotate_left(){
@@ -33,7 +32,7 @@ public class PieceLLeft extends PieceBase {
             liabj[0][2]= '*';
             liabj[1][2]= '*';
             piecelleft = liabj;
-            orientacion = 2;
+            setOrientacion(2);
             } 
 
         case 2 -> {
@@ -47,7 +46,7 @@ public class PieceLLeft extends PieceBase {
             lid[2][0]= '*';
             lid[0][1]= '*';
             piecelleft = lid;
-            orientacion = 3;
+            setOrientacion(3);
             }  
 
         case 3 -> {
@@ -60,7 +59,7 @@ public class PieceLLeft extends PieceBase {
             liarb[1][1]= '*';
             liarb[1][2]= '*';
             piecelleft = liarb;
-            orientacion = 4;
+            setOrientacion(4);
             }  
 
         case 4 -> {
@@ -74,7 +73,7 @@ public class PieceLLeft extends PieceBase {
             lii[2][1]= '*';
             lii[2][0]= '*';
             piecelleft = lii;
-            orientacion = 1;
+            setOrientacion(1);
             }
     
         }
@@ -93,7 +92,7 @@ public class PieceLLeft extends PieceBase {
             lid[1][1]= '*';
             lid[1][2]= '*';
             piecelleft = lid;
-            orientacion = 2;
+            setOrientacion(2);
             }  
 
         case 2 -> {
@@ -107,7 +106,7 @@ public class PieceLLeft extends PieceBase {
             liabj[2][0]= '*';
             liabj[0][1]= '*';
             piecelleft = liabj;
-            orientacion = 3;
+            setOrientacion(3);
             }  
             
 
@@ -121,7 +120,7 @@ public class PieceLLeft extends PieceBase {
             lii[0][2]= '*';
             lii[1][2]= '*';
             piecelleft = lii;
-            orientacion = 4;
+            setOrientacion(4);
             } 
         
 
@@ -136,7 +135,7 @@ public class PieceLLeft extends PieceBase {
             liarb[2][1]= '*';
             liarb[2][0]= '*';
             piecelleft = liarb;
-            orientacion = 1;
+            setOrientacion(1);
             }
     
         }

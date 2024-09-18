@@ -2,7 +2,6 @@ package com.example.tetrisgame;
 
 public class PieceT extends PieceBase {
     private char[][] piecet;
-    private int orientacion;
     public PieceT(){
 
         piecet = new char[3][3];
@@ -19,7 +18,7 @@ public class PieceT extends PieceBase {
             
             
           
-            orientacion = 1;
+            setOrientacion(1);
     
     }
     
@@ -35,7 +34,7 @@ public class PieceT extends PieceBase {
             ti[1][1]= '*';
             ti[2][1]= '*';
             piecet = ti;
-            orientacion = 2;
+            setOrientacion(2);
             break;
 
         case 2: //abajo
@@ -47,7 +46,7 @@ public class PieceT extends PieceBase {
             tabj[0][2]= '*';
             tabj[1][1]= '*';
             piecet = tabj;
-            orientacion = 3;
+            setOrientacion(3);
             break; 
 
         case 3: //derecha
@@ -60,7 +59,7 @@ public class PieceT extends PieceBase {
             td[2][0]= '*';
             td[1][1]= '*';
             piecet = td;
-            orientacion = 4;
+            setOrientacion(4);
             break;    
 
         case 4: //arriba
@@ -72,7 +71,7 @@ public class PieceT extends PieceBase {
             tarb[1][2]= '*';
             tarb[0][1]= '*';
             piecet = tarb;
-            orientacion = 1;
+            setOrientacion(1);
             break;
     
         }
@@ -90,7 +89,7 @@ public class PieceT extends PieceBase {
             td[1][2]= '*';
             td[2][1]= '*';
             piecet = td;
-            orientacion = 4;
+            setOrientacion(4);
             break;
 
         case 2: //arriba
@@ -102,7 +101,7 @@ public class PieceT extends PieceBase {
             tarb[1][1]= '*';
             tarb[1][2]= '*';
             piecet = tarb;
-            orientacion = 1;
+            setOrientacion(1);
             break;
 
         case 3: //izquierda
@@ -115,7 +114,7 @@ public class PieceT extends PieceBase {
             ti[1][1]= '*';
             ti[2][1]= '*';
             piecet = ti;
-            orientacion = 2;
+            setOrientacion(2);
             break;    
 
         case 4: //abajo
@@ -127,12 +126,11 @@ public class PieceT extends PieceBase {
             tabj[0][2]= '*';
             tabj[1][1]= '*';
             piecet = tabj;
-            orientacion = 3;
+            setOrientacion(3);
             break; 
     
         }
     }
-
 
 
     public int getOrientacion(){

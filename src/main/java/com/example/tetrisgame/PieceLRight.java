@@ -2,7 +2,6 @@ package com.example.tetrisgame;
 
 public class PieceLRight extends PieceBase {
     private char[][] piecelright;
-    private int orientacion;
     public PieceLRight(){
 
         piecelright = new char[3][3];
@@ -17,7 +16,7 @@ public class PieceLRight extends PieceBase {
             piecelright[2][0] = '*';
             piecelright[2][1] = '*';
         
-            orientacion = 1;
+            setOrientacion(1);
     }
     
     public void rotate_left(){
@@ -31,7 +30,7 @@ public class PieceLRight extends PieceBase {
             ldarb[1][2]= '*';
             ldarb[0][2]= '*';
             piecelright = ldarb;
-            orientacion = 2;
+            setOrientacion(2);
             break; 
 
         case 2: //izquierda
@@ -44,7 +43,7 @@ public class PieceLRight extends PieceBase {
             ldi[1][1]= '*';
             ldi[2][1]= '*';
             piecelright = ldi;
-            orientacion = 3;
+            setOrientacion(3);
             break;  
 
         case 3: //abajo
@@ -56,7 +55,7 @@ public class PieceLRight extends PieceBase {
             ldabj[0][2]= '*';
             ldabj[1][0]= '*';
             piecelright = ldabj;
-            orientacion = 4;
+            setOrientacion(4);
             break;  
 
         case 4: //derecha
@@ -69,7 +68,7 @@ public class PieceLRight extends PieceBase {
             ldd[2][0]= '*';
             ldd[2][1]= '*';
             piecelright = ldd;
-            orientacion = 1;
+            setOrientacion(1);
             break;
     
         }
@@ -86,7 +85,7 @@ public class PieceLRight extends PieceBase {
             lrd[0][2]= '*';
             lrd[1][0]= '*';
             piecelright = lrd;
-            orientacion = 4;
+            setOrientacion(4);
             break;
 
         case 2: //arriba
@@ -99,7 +98,7 @@ public class PieceLRight extends PieceBase {
                 larr[1][1]= '*';
                 larr[2][1]= '*';
                 piecelright = larr;
-                orientacion = 1;
+                setOrientacion(1);
                 break;  
         
         case 3://izquierda
@@ -111,7 +110,7 @@ public class PieceLRight extends PieceBase {
             lri[1][2]= '*';
             lri[0][2]= '*';
             piecelright = lri;
-            orientacion = 2;
+            setOrientacion(2);
             break;  
 
         case 4: //abajo
@@ -124,7 +123,7 @@ public class PieceLRight extends PieceBase {
             labj[1][1]= '*';
             labj[2][1]= '*';
             piecelright = labj;
-            orientacion = 3;
+            setOrientacion(3);
             break;  
     
         }

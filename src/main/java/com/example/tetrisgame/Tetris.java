@@ -18,10 +18,9 @@ public class Tetris extends Clock {
 
     public void ganar() {
         this.partidaEnCurso = false;
-        System.out.println("Has ganado");
     }
 
-    public static void perder() {
-        System.out.println("Has perdido");
+    public void perder() {
+        this.partidaEnCurso = false;
     }
 }

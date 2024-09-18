@@ -494,20 +494,23 @@ public class BoardTest {
             assert b1.getBoard()[9][j] == '.';
         } 
     }
-    
 
     @Test
-    void final_test(){
-        PieceBase p1 = new PieceSquare();
-        PieceBase p2 = new PieceStick();
-        PieceBase p3 = new PieceDogLeft();
-        PieceBase p4 = new PieceDogRight();
-        PieceBase p5 = new PieceLLeft();
-        PieceBase p6 = new PieceLRight();
-        PieceBase p7 = new PieceT();
+    void borrar_fila_no_completa(){
+        Board b1 = new Board();
+        PieceBase pS = new PieceSquare();
 
+        for (int j = 0; j < 18; j += 2) {
+            b1.addPiecesEspecific(pS, 0, j);
 
+            for (int i = 0; i < 10; i++) {
+                b1.bajarPieza(pS);
+            }
+        }
+
+        b1.borrarFila(9);
+
+        assert b1.estaCompleta(9) == false;
 
     }
-    
 }

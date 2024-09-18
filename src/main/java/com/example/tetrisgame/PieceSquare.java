@@ -2,7 +2,6 @@ package com.example.tetrisgame;
 
 public class PieceSquare extends PieceBase{
     private char[][] pieceSquare;
-    private int orientacion;
 
     public PieceSquare(){
         pieceSquare = new char[4][4];
@@ -18,7 +17,7 @@ public class PieceSquare extends PieceBase{
         pieceSquare[1][0] = '*';
         pieceSquare[1][1] = '*';
 
-        orientacion = 1;
+        setOrientacion(1);
     }
 
     public void rotate_left(){
@@ -28,7 +27,7 @@ public class PieceSquare extends PieceBase{
         si[1][0]= '*';
         si[1][1]= '*';
         pieceSquare = si;
-        orientacion = 2;
+        setOrientacion(2);
     }
 
     public void rotate_right(){

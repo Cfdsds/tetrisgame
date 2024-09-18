@@ -119,7 +119,7 @@ public class Board {
                     if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
                         // Si ya hay algo en la celda del tablero, cancela la operación
                         if (tablero[boardX][boardY] != '.') {
-                            Tetris.perder();
+                            //Tetris.perder();
                             return false; // La operación falla si una posición está ocupada
                         }
                     }
@@ -248,12 +248,6 @@ public class Board {
     }
 
   
-    
-    public void llegarAlFinal(PieceBase piezaAct) {
-        //agregar nueva pieza(esta mal)
-       colocarPieza(piezaAct);
-       addPieces(piezaRandom());
-    }
 
     public boolean estaCompleta(int fila) {
         for (int j = 0; j < tablero[0].length; j++) {
@@ -303,29 +297,6 @@ public class Board {
             return false; // Fila no completa
         }
     }
-    
-    public boolean puedeAgregar(PieceBase pieza) {
-        int anchoPieza = pieza.getPieza()[0].length; // Obtener el ancho de la pieza desde su matriz
-        
-        int espaciosLibres = 0;
-        
-        for (int j = 0; j < tablero[0].length; j++) {
-            if (tablero[0][j] == '.') {
-                espaciosLibres++;
-            } else {
-                espaciosLibres = 0; // Reinicia si encuentra un obstáculo
-            }
-    
-            // Si encontramos suficientes espacios libres contiguos para la pieza
-            if (espaciosLibres >= anchoPieza) {
-                return true;
-            }
-        }
-        
-        return false; // No hay suficiente espacio contiguo para la pieza
-    }
-    
-    
-    
+          
 }
     

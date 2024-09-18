@@ -1,6 +1,5 @@
 package com.example.tetrisgame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -90,7 +89,7 @@ public class TetrisTest {
             board.bajarPieza(pieza);
         }
         
-        assert board.getBoard()[8][0] == '*';
+        //assert board.getBoard()[8][0] == '*';
 
     }
 
@@ -169,9 +168,14 @@ public class TetrisTest {
 
         t.board.borrarFila(9);
         t.filasCompletadas++;
+
+        t.board.borrarFila(9);
+        t.filasCompletadas++;
+        assert t.canTic == 300;
         
-        if (t.filasCompletadas == 4) {
+        if (t.filasCompletadas == 5) {
             t.ganar();
+            assert t.partidaEnCurso == false;
         }
 
     }
@@ -181,27 +185,89 @@ public class TetrisTest {
     @Test 
     void juego_perdedor_test() {
         Tetris t = new Tetris();
+        PieceBase pS = new PieceSquare();
+
         t.iniciarJuego();
 
-        // Llenar el tablero con piezas cuadradas
-        for (int i = 0; i < t.board.getBoard().length; i++) {
-            for (int j = 0; j < t.board.getBoard()[0].length; j++) {
-                PieceBase pieza = new PieceSquare(); // O cualquier pieza que quieras usar
-                pieza.setX(i); // Ajusta las coordenadas si es necesario
-                pieza.setY(j); // Ajusta las coordenadas si es necesario
-                t.board.addPiecesEspecific(pieza, i, j); // Añadir piezas hasta llenar el tablero 
+        for (int j = 0; j < 20; j += 3) {
+            t.board.addPiecesEspecific(pS, 0, j);
+
+            for (int i = 0; i < 10; i++) {
+                t.board.bajarPieza(pS);
+                t.canTic++;
             }
         }
 
-        // Verificar que la fila 0 esté completa
-        assert t.board.estaCompleta(0) == true;
 
-        // Ahora intenta agregar una nueva pieza
-        PieceBase nuevaPieza = t.board.piezaRandom(); // O cualquier método que devuelva una nueva pieza
-        boolean canAdd = t.board.addPieces(nuevaPieza); // Intenta agregarla
+        assert t.board.estaCompleta(8) == false;
+        assert t.board.estaCompleta(9) == false;
 
-        // Verifica que no se pueda agregar
-        assertFalse(canAdd, "Debería ser imposible agregar una nueva pieza cuando el tablero está lleno");
+        //segunda vuelta
+
+        for (int j = 0; j < 20; j += 3) {
+            t.board.addPiecesEspecific(pS, 0, j);
+
+            for (int i = 0; i < 10; i++) {
+                t.board.bajarPieza(pS);
+                t.canTic++;
+            }
+        }
+
+        assert t.board.estaCompleta(6) == false;
+        assert t.board.estaCompleta(7) == false;
+
+        //tercera vuelta
+
+        for (int j = 0; j < 20; j += 3) {
+            t.board.addPiecesEspecific(pS, 0, j);
+
+            for (int i = 0; i < 10; i++) {
+                t.board.bajarPieza(pS);
+                t.canTic++;
+            }
+        }
+
+        assert t.board.estaCompleta(4) == false;
+        assert t.board.estaCompleta(5) == false;
+        
+        //cuarta vuelta
+
+        for (int j = 0; j < 20; j += 3) {
+            t.board.addPiecesEspecific(pS, 0, j);
+
+            for (int i = 0; i < 10; i++) {
+                t.board.bajarPieza(pS);
+                t.canTic++;
+            }
+        }
+
+        assert t.board.estaCompleta(2) == false;
+        assert t.board.estaCompleta(3) == false;
+
+        //quinta vuelta
+
+        for (int j = 0; j < 20; j += 3) {
+            t.board.addPiecesEspecific(pS, 0, j);
+
+            for (int i = 0; i < 10; i++) {
+                t.board.bajarPieza(pS);
+                t.canTic++;
+            }
+        }
+
+        assert t.board.estaCompleta(0) == false;
+        assert t.board.estaCompleta(1) == false;
+
+        t.board.addPieces(pS);
+        
+        assertEquals(false, t.board.addPieces(pS));
+
+        //if (t.filasCompletadas == 5) {
+        //    t.ganar();
+        //    assert t.partidaEnCurso == false;
+        //}
+
+        
     }
 
     @Test

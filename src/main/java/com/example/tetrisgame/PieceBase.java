@@ -10,13 +10,7 @@ public abstract class PieceBase {
     public int y;
     public int orientacion;
 
- 
-    public void NewPiece() {
-        
-    }
-
-    public void RotatePiece() {
-
+    public PieceBase() {
     }
 
     public int getX() {
