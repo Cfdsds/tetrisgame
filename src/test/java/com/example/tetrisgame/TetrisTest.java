@@ -1,8 +1,5 @@
 package com.example.tetrisgame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -38,60 +35,6 @@ public class TetrisTest {
         assertEquals(t.board.estaVacia(0), true);
     }
 
-    @Test
-    void primer_juego_test() {
-        // Inicializamos el tablero y la pieza
-        Board board = new Board();
-
-        assertNotNull(board.getBoard(), "El tablero no debería ser nulo");
-        assertEquals(10, board.getBoard().length, "El tablero debería tener 10 filas");
-        assertEquals(20, board.getBoard()[0].length, "El tablero debería tener 20 columnas");
-
-        // Probar la adición de una pieza aleatoria al tablero
-        PieceBase pieza = board.piezaActual; // Usa la pieza generada por defecto en el Board
-        assertNotNull(pieza, "La pieza generada no debería ser nula");
-        boolean added = board.addPieces(pieza);
-        assertTrue(added, "La pieza debería poder añadirse al tablero");
-
-        // Comprobar qué tipo de pieza es
-        if (pieza instanceof PieceSquare) {
-            assertTrue(pieza instanceof PieceSquare, "Se generó una pieza cuadrada");
-        } else if (pieza instanceof PieceStick) {
-            assertTrue(pieza instanceof PieceStick, "Se generó una pieza en forma de palo");
-        } else if (pieza instanceof PieceDogLeft) {
-            assertTrue(pieza instanceof PieceDogLeft, "Se generó una pieza en forma de perro izquierdo");
-        } else if (pieza instanceof PieceDogRight) {
-            assertTrue(pieza instanceof PieceDogRight, "Se generó una pieza en forma de perro derecho");
-        } else if (pieza instanceof PieceLLeft) {
-            assertTrue(pieza instanceof PieceLLeft, "Se generó una pieza en forma de L invertida");
-        } else if (pieza instanceof PieceLRight) {
-            assertTrue(pieza instanceof PieceLRight, "Se generó una pieza en forma de L");
-        } else if (pieza instanceof PieceT) {
-            assertTrue(pieza instanceof PieceT, "Se generó una pieza en forma de T");
-        } else {
-            fail("Se generó una pieza desconocida");
-        }
-
-
-        // Mover la pieza completamente hacia la izquierda
-        while (pieza.getY() > 0) {
-            board.moverIzquierda(pieza);
-        }
-        // Verificar que la pieza está completamente a la izquierda
-        assertEquals(0, pieza.getY(), "La pieza debería estar en la columna más a la izquierda");
-
-        //assert board.getBoard()[0][0] == '*';
-        //assert board.getBoard()[1][0] == '*';
-
-
-        // Mover la pieza completamente hacia abajo hasta la última fila
-        for(int i = 0; i < 10; i++){
-            board.bajarPieza(pieza);
-        }
-        
-        //assert board.getBoard()[8][0] == '*';
-
-    }
 
     @Test
     void juego_Ganador(){

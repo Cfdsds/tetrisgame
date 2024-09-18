@@ -68,6 +68,32 @@ public class BoardTest {
     }
 
     @Test
+    void agregar_pieza_aleatoria_y_que_se_salga_del_tablero_test() {
+        Board b1 = new Board();
+        PieceBase piezaRandom = b1.piezaRandom();
+        
+        // Fuerza a la pieza a colocarse fuera del tablero en la columna Y = 21
+        b1.addPiecesEspecific(piezaRandom, 0, 21);
+        
+        char[][] tablero = b1.getBoard();
+        char[][] pieza = piezaRandom.getPieza();
+        int posY = piezaRandom.getY(); // Columna
+
+        // Verifica que la pieza se haya salido del tablero
+        for (int i = 0; i < pieza.length; i++) {
+            for (int j = 0; j < pieza[i].length; j++) {
+                if (pieza[i][j] == '*') {
+                    int boardY = posY + j; // Columna en el tablero
+                    
+                    // Aquí verificamos que se salga del tablero
+                    assertTrue(boardY < 0 || boardY >= tablero[0].length, "La pieza no se sale del limite en Y");
+                }
+            }
+        }
+    }
+
+
+    @Test
     void limpiar_pieza_del_tablero_test(){
         Board b1 = new Board();
         PieceBase p1 = b1.piezaRandom();
@@ -152,7 +178,7 @@ public class BoardTest {
         PieceSquare pS = new PieceSquare();
         
         
-        b1.addPieces(pS);
+        b1.addPiecesEspecific(pS, 0, 10);
 
         int posicionInicialY = pS.getY();
         b1.moverDerecha(pS);
@@ -167,7 +193,7 @@ public class BoardTest {
         Board b1 = new Board();
         PieceSquare pS = new PieceSquare();
 
-        b1.addPieces(pS);
+        b1.addPiecesEspecific(pS,0,10);
         int posicionicialY = pS.getY();
         b1.moverIzquierda(pS);
         int posicionFinalY = pS.getY();
@@ -181,7 +207,7 @@ public class BoardTest {
         Board b1 = new Board();
         PieceSquare pS = new PieceSquare();
         
-        b1.addPieces(pS);
+        b1.addPiecesEspecific(pS, 0, 10);
         int posicionInicialY = pS.getY();
         int posicionInicialX = pS.getX();
 
@@ -198,12 +224,12 @@ public class BoardTest {
     }
 
     @Test
-    void bajar_pieza__random_y_despues_mover_a_la_derecha(){
+    void bajar_pieza_random_y_despues_mover_a_la_derecha(){
         Board b1 = new Board();
         PieceBase p1 = b1.piezaRandom();
 
         
-        b1.addPieces(p1);
+        b1.addPiecesEspecific(p1, 0, 10);
         int posicionInicialY = p1.getY();
         int posicionInicialX = p1.getX();
 

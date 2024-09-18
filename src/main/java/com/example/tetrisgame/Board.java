@@ -24,8 +24,6 @@ public class Board {
     }
 
 
-
-
     public PieceBase piezaRandom() {
         Random random = new Random();
         int tipoPieza = random.nextInt(7); // Cambia el rango según el número de piezas
@@ -86,18 +84,7 @@ public class Board {
         }
 
         // Si no se encontraron colisiones, coloca la pieza
-        for (int i = 0; i < pieza.length; i++) {
-            for (int j = 0; j < pieza[i].length; j++) {
-                if (pieza[i][j] != '.') {
-                    int boardX = posX + i;
-                    int boardY = posY + j;
-
-                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
-                        tablero[boardX][boardY] = '*'; // Coloca la pieza
-                    }
-                }
-            }
-        }
+        colocarPieza(piezaR);
 
         return true; // La operación fue exitosa
     }
@@ -128,18 +115,7 @@ public class Board {
         }
 
         // Si no se encontraron colisiones, coloca la pieza
-        for (int i = 0; i < pieza.length; i++) {
-            for (int j = 0; j < pieza[i].length; j++) {
-                if (pieza[i][j] != '.') {
-                    int boardX = posX + i;
-                    int boardY = posY + j;
-
-                    if (boardX >= 0 && boardX < tablero.length && boardY >= 0 && boardY < tablero[0].length) {
-                        tablero[boardX][boardY] = '*'; // Coloca la pieza
-                    }
-                }
-            }
-        }
+        colocarPieza(piezaE);
 
         return true; // La operación fue exitosa
     }

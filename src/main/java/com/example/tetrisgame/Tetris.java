@@ -17,10 +17,18 @@ public class Tetris extends Clock {
     }
 
     public void ganar() {
-        this.partidaEnCurso = false;
+        setPartidaEnCurso(false);
     }
 
     public void perder() {
-        this.partidaEnCurso = false;
+        setPartidaEnCurso(false);
+    }
+
+    public boolean getPartidaEnCurso() {
+        return this.partidaEnCurso;
+    }
+
+    public void setPartidaEnCurso(boolean partidaEnCurso) {
+        this.partidaEnCurso = partidaEnCurso;
     }
 }
